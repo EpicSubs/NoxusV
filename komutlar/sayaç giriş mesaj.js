@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true, //True => Komut açık, False => Komut kapalı
 
-  guildOnly: true, //True => Sadece Servere Özel, False => Heryerde kullanılabilir
+  guildOnly: false, //True => Sadece Servere Özel, False => Heryerde kullanılabilir
 
   aliases: [], //Komutun farklı kullanımları ÖR: !ping, !p
 
