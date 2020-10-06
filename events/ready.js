@@ -14,7 +14,7 @@ module.exports = client => {
       client.user.username
     } ismi ile giriş yapıldı!`
   );
-  client.user.setStatus("dnd");
+  client.user.setStatus("idle");
   //rahatsız etmeyin "dnd"
   //boşta "idle"
   client.user.setActivity(
