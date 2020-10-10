@@ -4,13 +4,8 @@ const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
   let prefix =
-  ( await require("wio.db").fetch(`prefix.${message.guild.id}`)
-    ) || ayarlar.prefix;
-  /*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-!!
-*/
+    (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
+    ayarlar.prefix;
 
   if (!message.guild) {
     const ozelmesajuyari = new Discord.RichEmbed()
@@ -27,11 +22,6 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
     return message.reply(
       `<:no:663378512417128449> Bu komutu kullanabilmek için **Sunucuyu Yönet** iznine sahip olmalısın!`
     );
-  /*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-!!
-*/
 
   let rol =
     message.mentions.roles.first() || message.guild.roles.get(args.join(" "));
@@ -41,7 +31,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
     const hata = new Discord.RichEmbed()
       .setAuthor("HATA", message.author.avatarURL)
       .setDescription(
-        `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kayıtsız-rol @roletiket\`\`\``
+        `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}yetkili-role @roletiket\`\`\``
       )
       .setColor("RED")
       .setTimestamp();
@@ -49,7 +39,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
   } else newRole = message.mentions.roles.first().id;
   let isim = message.mentions.roles.first().name;
   db.set(`kayıtisim.${message.guild.id}`, isim);
-  let otorol = await db.set(`kayıtsızRol.${message.guild.id}`, newRole);
+  let otorol = await db.set(`yetkiliRol.${message.guild.id}`, newRole);
   if (!message.guild.roles.get(newRole)) {
     const hata = new Discord.RichEmbed()
       .setAuthor("HATA", message.author.avatarURL)
@@ -70,21 +60,15 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
   return message.channel.send(embed);
 };
 
-/*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-!!
-*/
-
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["kayıtsızrol", "kayıtsızrole", "kayıtsız-rol"],
+  aliases: ["yetkili-rol", "yetkilirol", "yetkilirole"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "kayıtsız-role",
-  description: "Kayıtsız rolü ayarlanır.",
-  usage: "kayıtsız-rol"
+  name: "yetkili-role",
+  description: "Sunucuya giren kullanıcıya seçtiğiniz rolü otomatik verir.",
+  usage: "teyit-kayıtsız-rol"
 };

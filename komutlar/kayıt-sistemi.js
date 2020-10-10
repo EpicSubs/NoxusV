@@ -55,6 +55,6 @@ exports.conf = {
 exports.help = {
   name: "sunucu-kayıt-sistemi",
   description: "Sadece etiket ile (Erkek - Kadın) kayıt sistem",
-  usage: "kayıt-sistemi",
+  usage: "sunucu-kayıt-sistemi",
   type: "Moderasyon"
 };
