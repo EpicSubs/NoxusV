@@ -1,49 +1,46 @@
 const Discord = require("discord.js");
 const db = require("wio.db");
-module.exports.run = async (bot, message, args) => {
-  let prefix = await db.fetch(`prefix_${message.guild.id}`);
-  if (!message.member.hasPermission("KICK_MEMBERS")) {
-    const embed = new Discord.RichEmbed()
-      .setDescription(`Ne yazık ki bu komutu kullanmaya yetkin yok!`)
-      .setColor("RANDOM")
-      .setFooter(bot.user.username, bot.user.avatarURL);
-    message.channel.send(embed);
-    return;
-  }
 
-  let erkek =
-    message.mentions.roles.first() ||
-    message.guild.roles.find(rol => rol.name === args[0]);
-  if (!erkek) {
-    return message.channel.send(
-      new Discord.RichEmbed()
-        .setDescription(`Lütfen bir erkek rol belirtiniz!`)
-        .setColor("RANDOM")
-        .setFooter(bot.user.username, bot.user.avatarURL)
+exports.run = async (client, message, args) => {
+  const ayarlar = require("../ayarlar.json");
+  let prefix =
+    (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
+    ayarlar.prefix;
+  if (!message.member.permissions.has("MANAGE_GUILD"))
+    return message.reply(
+      `<:no:663378512417128449> Bu komutu kullanabilmek için **Sunucuyu Yönet** iznine sahip olmalısın!`
     );
-  }
-  const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setTitle("Kayıt Sistemi")
-    .addField(`Ayarlanan Erkek Rolü:`, `${erkek}`)
-    .addField(`Rolü Ayarlayan Yetkili:`, `<@${message.author.id}>`)
-    .setDescription(`Erkek rolünü başarıyla ${erkek} olarak ayarlandı!`)
-    .setFooter(bot.user.username, bot.user.avatarURL);
-  message.channel.send(embed);
 
-  db.set(`erkekrol_${message.guild.id}`, erkek.id);
+  const rol = message.mentions.roles.first();
+
+  if (!rol) {
+    const hata = new Discord.RichEmbed()
+      .setAuthor("HATA", message.author.avatarURL)
+      .setDescription(
+        `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}erkek-role @roletiket\`\`\``
+      )
+      .setColor("RED")
+      .setTimestamp();
+    return message.channel.send(hata);
+  }
+  db.set(`erkekRol.${message.guild.id}`, rol.id);
+  const embed = new Discord.RichEmbed()
+    .setAuthor(`İşte bu kadar!`, message.author.avatarURL)
+    .setDescription(`Kayıt da kullanılacak: ${rol} rolü olarak seçtiniz!`)
+    .setTimestamp()
+    .setColor("GREEN");
+  return message.channel.send(embed);
 };
 
-module.exports.conf = {
-  aliases: [],
-  permLevel: 2,
+exports.conf = {
   enabled: true,
   guildOnly: false,
-  kategori: "moderasyon"
+  aliases: ["erkekrole", "erkekrol", "erkek-rol"],
+  permLevel: 0
 };
 
-module.exports.help = {
-  name: "erkek-rol-ayarla",
-  description: "Erkek Rolü Ayarlarınız",
-  usage: "erkek-rol-ayarla <@rol>"
+exports.help = {
+  name: "erkek-role",
+  description: "Kişi susturulunca verilecek rolü ayarlarsınız.",
+  usage: "mute-rol"
 };

@@ -1,73 +1,122 @@
 const Discord = require("discord.js");
 const db = require("wio.db");
-const ayarlar = require("../ayarlar.json");
-
-var prefix = ayarlar.prefix;
+const ms = require("ms");
 
 exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-    const embed = new Discord.RichEmbed()
-      .setTitle(`Kayıt Sistemi`)
+  const ayarlar = require("../ayarlar.json");
+  let prefix =
+    (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
+    ayarlar.prefix;
+
+  let mutel = await db.fetch(`kadınRol.${message.guild.id}`);
+  let yetkili = await db.fetch(`yetkiliRol.${message.guild.id}`);
+  let kayitsiz = await db.fetch(`kayıtsızRol.${message.guild.id}`);
+  /*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
+
+  if (!yetkili) return;
+  if (!mutel) return;
+  if (!message.member.roles.has(yetkili)) {
+    const hata = new Discord.RichEmbed()
+      .setAuthor("HATA", message.author.avatarURL)
       .setDescription(
-        "Bu Komutu Kullanabilmek İçin ``İsimleri Yönet`` Yetkisine Sahip Olmalısın"
+        `Bu komut için yetersiz izniniz bulunuyor! Yetkili rolüne sahip olmalısınız!`
       )
-      .setColor("RANDOM");
-    return message.reply(embed);
+      .setColor("RED")
+      .setTimestamp();
+    return message.channel.send(hata);
   }
-  let bayanrol = await db.fetch(`bayanrol_${message.guild.id}`);
-  let kayıtsızrol = await db.fetch(`kayıtsızrol_${message.guild.id}`);
-  let kayıtkanal = await db.fetch(`kayitkanal_${message.guild.id}`);
-  let member =
-    message.mentions.users.first() || client.users.get(args.join(" "));
+  let kisi = message.mentions.members.first();
+  if (!kisi) {
+    const hata = new Discord.RichEmbed()
+      .setAuthor("HATA", message.author.avatarURL)
+      .setDescription(
+        `Lütfen bir kullanıcıyı etiketleyin!\n\n**Örnek Kullanım:** \n\`\`\`${prefix}kadın @kullanıcı\`\`\` `
+      )
+      .setColor("RED")
+      .setTimestamp();
+    return message.channel.send(hata);
+  }
+  /*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
 
-  const hata1 = new Discord.RichEmbed() //kişi hata
-    .setColor("RED")
-    .setTitle(`Yanlış Kullanım Tespit Edildi.`)
-    .addField(`Doğru Kullanım:`, `\`${ayarlar.prefix}bayan @Üye İsim Yaş\``)
-    .setFooter(`${message.author.tag}`, message.author.avatarURL);
-  if (!member) return message.channel.send(hata1);
-  const m = message.guild.member(member);
-  const isim = args[1];
-  const yas = args[2];
+  if (kisi.id === message.author.id) {
+    const hata = new Discord.RichEmbed()
+      .setAuthor("HATA", message.author.avatarURL)
+      .setDescription(`Kendinizi kayıt edemezsiniz!`)
+      .setColor("RED")
+      .setTimestamp();
+    return message.channel.send(hata);
+  }
+  if (
+    !kisi.voiceChannel ||
+    kisi.voiceChannel.id === null ||
+    kisi.voiceChannel.id === NaN ||
+    kisi.voiceChannel.id === undefined
+  )
+    return message
+      .reply(`Etiketlediğin Kullanıcı Ses Kanalına Bağlı Değil.`)
+      .catch(console.error);
 
-  const hata2 = new Discord.RichEmbed() //nick hata
-    .setColor("RED")
-    .setTitle(`Yanlış Kullanım Tespit Edildi.`)
-    .addField(`Doğru Kullanım:`, `\`${ayarlar.prefix}bayan @Üye İsim Yaş\``)
-    .setFooter(`${message.author.tag}`, message.author.avatarURL);
-  if (!isim) return message.channel.send(hata2);
+  const embed22 = new Discord.RichEmbed()
+    .setTitle(`Sen Harikasın!`)
+    .setDescription(
+      `**Kayıt Edilen Kullanıcı** ${kisi}  \n**Kayıt İşleminde Verilen Rol** <@&${mutel}>`
+    )
+    .setFooter(
+      `Komutu kullanan yetkili : ${message.author.username}`,
+      message.author.avatarURL
+    )
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setColor("GREEN")
+    .setThumbnail(message.author.avatarURL);
+  message.channel.send(embed22);
 
-  const hata3 = new Discord.RichEmbed() //yas hata
-    .setColor("RED")
-    .setTitle(`Yanlış Kullanım Tespit Edildi.`)
-    .addField(`Doğru Kullanım:`, `\`${ayarlar.prefix}bayan @Üye İsim Yaş\``)
-    .setFooter(`${message.author.tag}`, message.author.avatarURL);
-  if (!yas) return message.channel.send(hata3);
+  kisi.addRole(mutel).then(y => y.removeRole(kayitsiz));
 
-  m.addRole(bayanrol);
-  m.removeRole(kayıtsızrol);
-  m.setNickname(`${isim} | ${yas}`);
+  /*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
 
-  const embed = new Discord.RichEmbed()
-    .setColor(`RANDOM`)
-    .setTitle(`<a:evet:696318840560287754> | Başarıyla Kayıt Edildi!`)
-    .addField(`Kayıt Edilen:`, `${member}`)
-    .addField(`Kayıt Esnasında Verilen Rol:`, `<@&${bayanrol}>`)
-    .addField(`Kayıt Eden Yetkili:`, `<@${message.author.id}>`)
-    .addField(`Kayıt Esnasında Verilen İsim:`, `${isim} | ${yas}`)
-    .setFooter(`${message.author.tag}`, message.author.avatarURL);
-  message.guild.channels.get(kayıtkanal).send(embed);
+  const yar = new Discord.RichEmbed()
+    .setTitle(`Sunucu Kayıt Log`)
+    .setDescription(
+      `
+**Kayıt Edilen Kullanıcı:** ${kisi}
+**Kullanıcıyı Kayıt Eden Kullanıcı**:  <@!${message.author.id}>
+`
+    )
+    .setColor("#F1F10D")
+    .setTimestamp()
+    .setThumbnail(client.user.avatarURL);
+  client.channels.get("modlog").send(yar);
+  db.set(`muteee.${kisi.id}`, "var");
+  db.add(`kadınpuan_${message.guild.id}_${message.author.id}`, 1);
 };
-//}
+
+/*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
+
 exports.conf = {
   enabled: true,
-  guildOnly: true,
-  aliases: [],
+  guildOnly: false,
+  aliases: ["kadın"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "bayan",
-  usage: ["bayan"],
-  description: "Bayanları Kayıt Yapar."
+  name: "teyit-kadın",
+  description: "Erkek rolü verirsiniz.",
+  usage: "erkek"
 };

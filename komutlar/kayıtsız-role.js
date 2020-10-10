@@ -3,9 +3,14 @@ const db = require("wio.db");
 const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
-  let prefix =
+  let prefix ="n!"
     (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
     ayarlar.prefix;
+  /*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
 
   if (!message.guild) {
     const ozelmesajuyari = new Discord.RichEmbed()
@@ -22,6 +27,11 @@ exports.run = async (client, message, args) => {
     return message.reply(
       `<:no:663378512417128449> Bu komutu kullanabilmek için **Sunucuyu Yönet** iznine sahip olmalısın!`
     );
+  /*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
 
   let rol =
     message.mentions.roles.first() || message.guild.roles.get(args.join(" "));
@@ -31,7 +41,7 @@ exports.run = async (client, message, args) => {
     const hata = new Discord.RichEmbed()
       .setAuthor("HATA", message.author.avatarURL)
       .setDescription(
-        `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kadın-role @roletiket\`\`\``
+        `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kayıtsız-rol @roletiket\`\`\``
       )
       .setColor("RED")
       .setTimestamp();
@@ -39,7 +49,7 @@ exports.run = async (client, message, args) => {
   } else newRole = message.mentions.roles.first().id;
   let isim = message.mentions.roles.first().name;
   db.set(`kayıtisim.${message.guild.id}`, isim);
-  let otorol = await db.set(`kadınRol.${message.guild.id}`, newRole);
+  let otorol = await db.set(`kayıtsızRol.${message.guild.id}`, newRole);
   if (!message.guild.roles.get(newRole)) {
     const hata = new Discord.RichEmbed()
       .setAuthor("HATA", message.author.avatarURL)
@@ -51,7 +61,7 @@ exports.run = async (client, message, args) => {
     return message.channel.send(hata);
   }
   const embed = new Discord.RichEmbed()
-    .setTitle(`İşte bu kadar!`, message.author.avatarURL)
+    .setAuthor(`İşte bu kadar!`, message.author.avatarURL)
     .setDescription(
       `Kayıt da kullanılacak: <@&${newRole}> rolü olarak seçtiniz!`
     )
@@ -60,15 +70,21 @@ exports.run = async (client, message, args) => {
   return message.channel.send(embed);
 };
 
+/*
+!!
+EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
+!!
+*/
+
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["kadınrole", "kadınrol", "kadın-rol"],
+  aliases: ["kayıtsızrol", "kayıtsızrole", "kayıtsız-rol"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "kadın-role",
-  description: "Sunucuya giren kullanıcıya seçtiğiniz rolü otomatik verir.",
-  usage: "teyit-kayıtsız-rol"
+  name: "kayıtsız-role",
+  description: "Kayıtsız rolü ayarlanır.",
+  usage: "kayıtsız-rol"
 };
