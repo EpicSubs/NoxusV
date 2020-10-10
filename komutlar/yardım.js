@@ -5,8 +5,7 @@ exports.run = (client, message, args) => {
     "**MODERASYON**\n <a:hypesquad:757932784949133433> n!uyar \n <a:hypesquad:757932784949133433> n!rolinfo <rolismi> \n <a:hypesquad:757932784949133433> n!ban \n <a:hypesquad:757932784949133433> n!kick \n <a:hypesquad:757932784949133433> n!modlog \n <a:hypesquad:757932784949133433> n!otorol \n <a:hypesquad:757932784949133433> n!otorol-mesaj \n <a:hypesquad:757932784949133433> n!otorol-kanal \n <a:hypesquad:757932784949133433> n!sayaç \n <a:hypesquad:757932784949133433> n!sayaç giriş mesaj \n <a:hypesquad:757932784949133433> n!sayaç çıkış mesaj \n <a:hypesquad:757932784949133433> n!küfür-engel \n <a:hypesquad:757932784949133433> n!capslock-engelleme \n <a:hypesquad:757932784949133433> n!sunucu-kayıt-sistemi",
     "**EĞLENCE**\n <a:hypesquad:757932784949133433> n!espri \n <a:hypesquad:757932784949133433> n!balıktut \n <a:hypesquad:757932784949133433> n!inek \n <a:hypesquad:757932784949133433> n!atasözü \n <a:hypesquad:757932784949133433> n!aşk-ölçer <@kullanıcı>",
     "**KULLANICI**\n <a:hypesquad:757932784949133433> n!afk \n <a:hypesquad:757932784949133433> n!avatar \n <a:hypesquad:757932784949133433> n!sa-as",
-    "**BOT** \n <a:hypesquad:757932784949133433> n!istatistik \n <a:hypesquad:757932784949133433> n!ping \n <a:hypesquad:757932784949133433> n!yapımcım",
-    "**KAYIT KOMUTLARI BAKIMDADIR**"
+    "**BOT** \n <a:hypesquad:757932784949133433> n!istatistik \n <a:hypesquad:757932784949133433> n!ping \n <a:hypesquad:757932784949133433> n!yapımcım"
   ];
   let page = 1; //naptın ? knk bi dur mmm ekliyommmmmmmmmmmmmmmmemojiyi omekliy
   const embed = new Discord.RichEmbed()
