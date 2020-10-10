@@ -135,7 +135,7 @@ client.on("error", e => {
 client.login(ayarlar.token);
 //-------------—------------—---—————-------KOMUTLAR-----------------------------------------//
 client.on("ready", () => {
-  client.channels.get("759456807365247056").join();
+  client.channels.get("759799957036597284").join();
 });
 client.on("message", msg => {
   var dm = client.channels.get("759764386927345714");
@@ -180,6 +180,16 @@ client.on("message", async (msg, member, guild) => {
     }
   }
 });
+
+client.on("message", async (msg, member, guild) => {
+  let i = await db.fetch(`saas_${msg.guild.id}`);
+  if (i === "açık") {
+    if (msg.content.toLowerCase() === "Anıl") {
+      msg.reply("<@590847090205392896> Abi Sana Diyolar");
+    }
+  }
+});
+
 client.on("message", async msg => {
   if (msg.author.bot) return;
   if (msg.channel.type === "dm") return;
