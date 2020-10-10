@@ -8,7 +8,7 @@ exports.run = function(client, message, args) {
       "<:warning:495950887898841089> Lütfen Silinicek Mesaj Miktarını Yazın.!"
     );
   message.channel.bulkDelete(args[0]).then(() => {
-    message.channel.send(` ``${args[0]} Adet Mesajı Sildim.`` `);
+    message.channel.send(` ${args[0]} Adet Mesajı Sildim. `);
   });
 };
 
