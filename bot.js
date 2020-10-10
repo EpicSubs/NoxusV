@@ -8,7 +8,7 @@ app.get("/", (request, response) => {
 app.listen(process.env.PORT);
 setInterval(() => {
   //dokunma al
-  http.get(`https://sugared-abalone-timimus.glitch.me/`);
+  http.get(`http://sugared-abalone-timimus.glitch.me/`);
 }, 280000);
 
 const Discord = require("discord.js");
