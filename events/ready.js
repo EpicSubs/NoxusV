@@ -30,6 +30,6 @@ module.exports = client => {
       client.guilds.size +
       ` adet sunucuya ve ` +
       client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() +
-      ` kullanıcıya hizmet veriliyor!haı`
+      ` kullanıcıya hizmet veriliyor!`
   );
 };
