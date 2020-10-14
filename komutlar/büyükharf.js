@@ -5,11 +5,6 @@ exports.run = async (client, message, args) => {
   let prefix =
     (await require("wio.db").fetch(`prefix_${message.guild.id}`)) ||
     ayarlar.prefix;
-
-  if (message.author.id !== ayarlar.sahip)
-    return message.channel.send(
-      `Capslock engelleme adlı komut gereksinimini karşılamıyorsun`
-    );
   if (!message.member.hasPermission("ADMINISTRATOR"))
     return message.channel.send(`:fire: Yeterli yetki, bulunmamakta!`);
 
@@ -32,7 +27,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ["capslock-engel", "caps-sistem"],
-  permLevel: 4
+  permLevel: 3
 };
 exports.help = {
   name: "capslock-engelleme",
