@@ -32,7 +32,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ["capslock-engel", "caps-sistem"],
-  permLevel: 3
+  permLevel: 4
 };
 exports.help = {
   name: "capslock-engelleme",
