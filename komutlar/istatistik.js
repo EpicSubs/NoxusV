@@ -24,7 +24,7 @@ exports.run = async (bot, message, args) => {
       "» **Kullanıcılar**",
       bot.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(),
       true
-    )
+    )  
     .addField("» **Sunucular**", bot.guilds.size.toLocaleString(), true)
     .addField("» **Kanallar**", bot.channels.size.toLocaleString(), true)
     .addField("» **Discord.JS sürüm**", "v" + Discord.version, true)
