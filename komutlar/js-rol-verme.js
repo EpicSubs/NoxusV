@@ -4,7 +4,7 @@ exports.run = function(client, message) {
   var role = message.guild.roles.find(role => role.id === "761160248874500097"); // JS Rolünün ID sini yaziniz
   if (message.member.roles.has(role.id))
     return message.channel.send("⛔ Zaten bu role sahipsin :/");
-  message.member.addRole(role);
+  message.member.roles.add(role);
   message.channel.send(`✅ JavaScript rolü başarıyla verildi :)`);
 };
 

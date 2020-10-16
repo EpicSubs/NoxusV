@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   const bayrak = ":flag_tr:";
   const ping = `${Math.round(client.ping)}ms`;
 
-  let embed = new Discord.RichEmbed()
+  let embed = new Discord.MessageEmbed()
     .setTitle(":shield: Anlık Gecikme Süresi :shield:")
     .setColor("#00FF00")
     .addField("Ping :", ping)

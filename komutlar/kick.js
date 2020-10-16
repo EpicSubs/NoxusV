@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 exports.run = (client, message, args) => {
   if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
+    const ozelmesajuyari = new Discord.MessageEmbed()
       .setColor(0xff0000)
       .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL)
+      .setAuthor(message.author.username, message.author.avatarURL())
       .addField(
         ":warning: Uyarı :warning:",
         "`kick` adlı komutu özel mesajlarda kullanamazsın."
@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
     return message.reply("Yetkilileri sunucudan atamam.");
   message.guild.member(user).kick();
 
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor(0x00ae86)
     .setTimestamp()
     .addField("Eylem:", "Sunucudan atma")

@@ -6,8 +6,8 @@ exports.run = async (client, message, args) => {
     (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
     ayarlar.prefix;
 
-  const embed = new Discord.RichEmbed()
-    .setAuthor(`Sunucu Kayıt Sistemi`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`Sunucu Kayıt Sistemi`, message.author.avatarURL())
     .setDescription(
       `:white_small_square: - \`${prefix}erkek-role [@roletiket]\` - \`${prefix}erkek-role-kapat\` 
 Sunucuda kayıt edebilmeniz için erkek rolü belirlemelisiniz.
@@ -37,9 +37,9 @@ Bu komutla yetkililerin kaç erkek, kaç kadın kullanıcı kaydettiğini görü
     )
     .setFooter(
       `${message.author.tag} Tarafından istendi!`,
-      message.author.avatarURL
+      message.author.avatarURL()
     )
-    .setThumbnail(message.author.avatarURL)
+    .setThumbnail(message.author.avatarURL())
     .setColor("#F3EF0B")
     .setTimestamp();
   return message.channel.send(embed);

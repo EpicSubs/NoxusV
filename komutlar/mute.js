@@ -16,21 +16,21 @@ module.exports.run = async (bot, message, args) => {
     .slice(2)
     .join(" ");
   if (!reason)
-    return message.channel.sendEmbed(
-      new Discord.RichEmbed()
+    return message.channel.send(
+      new Discord.MessageEmbed()
         .setAuthor("Hata")
         .setDecription("Mute Sebebini Yazman Gerek")
         .setColor("RANDOM")
     );
-  let muterole = message.guild.roles.find(`name`, "Susturulmuş");
+  let muterole = message.guild.roles.cache.find(`name`, "Susturulmuş");
   if (!muterole) {
     try {
-      muterole = await message.guild.createRole({
+      muterole = await message.guild.roles.create({
         name: "Susturulmuş",
         color: "#000000",
         permissions: []
       });
-      message.guild.channels.forEach(async (channel, id) => {
+      message.guild.channels.cache.cache.forEach(async (channel, id) => {
         await channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false
@@ -41,8 +41,8 @@ module.exports.run = async (bot, message, args) => {
     }
   }
 
-  await user.addRole(muterole.id);
-  const muteembed = new Discord.RichEmbed()
+  await user.roles.add(muterole.id);
+  const muteembed = new Discord.MessageEmbed()
     .setAuthor("Eylem: Mute")
     .addField("Kullanıcı", `<@${user.id}>`)
     .addField("Sebep", `${reason}`)

@@ -14,8 +14,8 @@ exports.run = async (client, message, params, args) => {
 
   let özellik = await db.fetch(`sunucuKayıtLog.${message.guild.id}`);
   if (!özellik) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Kayıt log kanalı zaten ayarlanmamış bu yüzden kapatamazsın!`
       )
@@ -26,8 +26,8 @@ exports.run = async (client, message, params, args) => {
 
   db.delete(`sunucuKayıtLog.${message.guild.id}`);
 
-  const embed = new Discord.RichEmbed()
-    .setAuthor(`Başarılı!`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`Başarılı!`, message.author.avatarURL())
     .setDescription(`Sunucu kayıt log kanalı başarıyla verilerden silindi!`)
     .setTimestamp()
     .setColor("GREEN");

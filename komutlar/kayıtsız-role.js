@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+  const Discord = require("discord.js");
 const db = require("wio.db");
 const ayarlar = require("../ayarlar.json");
 
@@ -13,14 +13,14 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 */
 
   if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
+    const ozelmesajuyari = new Discord.MessageEmbed()
       .setColor(0x2488e7)
       .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL)
+      .setAuthor(message.author.username, message.author.avatarURL())
       .addField(
         "Sadece herhangi bir sunucudan mesaj gönderebilirim.:relaxed: "
       );
-    return message.author.sendEmbed(ozelmesajuyari);
+    return message.author.send(ozelmesajuyari);
   }
 
   if (!message.member.permissions.has("MANAGE_GUILD"))
@@ -34,12 +34,12 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 */
 
   let rol =
-    message.mentions.roles.first() || message.guild.roles.get(args.join(" "));
+    message.mentions.roles.first() || message.guild.roles.cache.get(args.join(" "));
   let newRole;
   let tworole;
   if (!rol) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kayıtsız-rol @roletiket\`\`\``
       )
@@ -50,9 +50,9 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
   let isim = message.mentions.roles.first().name;
   db.set(`kayıtisim.${message.guild.id}`, isim);
   let otorol = await db.set(`kayıtsızRol.${message.guild.id}`, newRole);
-  if (!message.guild.roles.get(newRole)) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+  if (!message.guild.roles.cache.get(newRole)) {
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Etiketlediğiniz rol bulunamadı, etiketlediğiniz rolün etiketlenebilirliğinin aktif olduğundan emin olunuz`
       )
@@ -60,8 +60,8 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
       .setTimestamp();
     return message.channel.send(hata);
   }
-  const embed = new Discord.RichEmbed()
-    .setAuthor(`İşte bu kadar!`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`İşte bu kadar!`, message.author.avatarURL())
     .setDescription(
       `Kayıt da kullanılacak: <@&${newRole}> rolü olarak seçtiniz!`
     )

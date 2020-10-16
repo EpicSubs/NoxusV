@@ -20,8 +20,8 @@ YOUTUBE: EMİRHAN SARAÇ
 */
 
   if (!kanal) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Kanal belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kanal-log #kanal\`\`\``
       )
@@ -30,8 +30,8 @@ YOUTUBE: EMİRHAN SARAÇ
     return message.channel.send(hata);
   }
   db.set(`kayıtKanal.${message.guild.id}`, kanal.id);
-  const embed = new Discord.RichEmbed()
-    .setAuthor(`Mükemmel!`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`Mükemmel!`, message.author.avatarURL())
     .setDescription(
       `Kayıt mesaj sisteminde ki kanal başarıyla ${kanal} olarak seçildi!`
     )

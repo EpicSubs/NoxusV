@@ -6,9 +6,9 @@ exports.run = async (bot, message, args) => {
   const seksizaman = moment
     .duration(bot.uptime)
     .format(" D [gün], H [saat], m [dakika], s [saniye]");
-  const istatistikler = new Discord.RichEmbed()
+  const istatistikler = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setFooter("Noxus  'Buyur benim istatistiklerim", bot.user.avatarURL)
+    .setFooter("Noxus  'Buyur benim istatistiklerim", bot.user.avatarURL())
     .addField(
       "» **Botun Sahibi**",
       "<@590847090205392896>| <@749966727881687070>"
@@ -29,7 +29,7 @@ exports.run = async (bot, message, args) => {
     .addField("» **Kanallar**", bot.channels.size.toLocaleString(), true)
     .addField("» **Discord.JS sürüm**", "v" + Discord.version, true)
     .addField("» **Node.JS sürüm**", `${process.version}`, true)
-    .addField("» **Ping**", bot.ping + " ms", true)
+    .addField("» **Ping**", bot.ws.ping + " ms", true)
     .addField(
       "» **CPU**",
       `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``
