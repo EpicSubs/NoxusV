@@ -8,6 +8,7 @@ dependencies:
   cpu-stat: 2.0.1
   croxy-api: 1.5.8
   dateformat: 3.0.3
+  dblapi.js: 2.4.1
   discord-giveaways: 4.2.1
   discord.js: 12.3.1
   express: 4.17.1
@@ -1221,6 +1222,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
+  /dblapi.js/2.4.1:
+    deprecated: Module is no longer maintained
+    dev: false
+    resolution:
+      integrity: sha512-g+u1inF/qOLit5qPK4hBGk5pKL1vy09uBLV+nukkRMvw2S9D1PyiyO70n4fboUXOgbExPp6Sho/Y782OqQOUiQ==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -4626,6 +4632,7 @@ specifiers:
   cpu-stat: ^2.0.1
   croxy-api: ^1.5.8
   dateformat: ^3.0.3
+  dblapi.js: ^2.4.1
   discord-giveaways: ^4.2.1
   discord.js: ^12.3.1
   express: ^4.17.1
