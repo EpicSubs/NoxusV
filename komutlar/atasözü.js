@@ -11,7 +11,7 @@ exports.run = (client, message, params) => {
     "**Leyleği kuştan mı sayarsın, yazın gelir, kışın gider.**"
   ];
   var atasozuver = Math.floor(Math.random() * Random.length);
-  const atasozu = new Discord.RichEmbed()
+  const atasozu = new Discord.MessageEmbed()
     .setDescription(`${Random[atasozuver]}`)
     .setColor(0xe2ff00)
     .setTimestamp();

@@ -15,7 +15,7 @@ YOUTUBE: EMİRHAN SARAÇ
   const user = message.mentions.users.first() || message.author;
   if (!user)
     return message.channel.send(
-      new Discord.RichEmbed()
+      new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("Hata :x:")
         .setDescription("Lütfen birisini etiketle!")

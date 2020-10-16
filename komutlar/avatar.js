@@ -9,10 +9,10 @@ exports.run = (client, message, args) => {
     user = message.author;
   }
 
-  const avatar = new Discord.RichEmbed()
+  const avatar = new Discord.()
     .setColor("RANDOM")
     .setAuthor("Al Napcaksan Artık Yavşama Ha")
-    .setImage(user.avatarURL);
+    .setImage(user.avatarURL());
   message.channel.sendEmbed(avatar);
 };
 
