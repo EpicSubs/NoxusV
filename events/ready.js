@@ -14,19 +14,17 @@ module.exports = client => {
       client.user.username
     } ismi ile giriş yapıldı!`
   );
-  client.user.setStatus("online");
+  client.user.setStatus("dnd");
   var oyun = [
-    "✔Komut Ekleniyor✔",
-    "🚫Bakımda🚫",
-    "!yardım",
+    "✅Komut Ekleniyor✅",
+    "🔰n!yardım🔰",
     "🚀Noxus İyi Eğlenceler Diler🚀",
-    "Sunucya Özel Prefix Sistemi Ekleniyor",
     ""
   ];
-//PLAYING Oynuyor //WATCHING İzliyor
+  //PLAYING Oynuyor //WATCHING İzliyor
   setInterval(function() {
     var random = Math.floor(Math.random() * (oyun.length - 0 + 1) + 0);
 
-    client.user.setActivity(oyun[random], {type: 'WATCHING'});
+    client.user.setActivity(oyun[random], { type: "WATCHING" });
   }, 2 * 2500);
 };

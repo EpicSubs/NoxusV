@@ -61,11 +61,11 @@ client.reload = command => {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
       client.commands.delete(command);
-      client.aliases.cache.forEach((cmd, alias) => {
+      client.aliases.forEach((cmd, alias) => {
         if (cmd === command) client.aliases.delete(alias);
       });
       client.commands.set(command, cmd);
-      cmd.conf.aliases.cache.forEach(alias => {
+      cmd.conf.aliases.forEach(alias => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
@@ -80,7 +80,7 @@ client.load = command => {
     try {
       let cmd = require(`./komutlar/${command}`);
       client.commands.set(command, cmd);
-      cmd.conf.aliases.cache.forEach(alias => {
+      cmd.conf.aliases.forEach(alias => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
@@ -95,8 +95,8 @@ client.unload = command => {
     try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);//knk ben anlamadm ya 
-      client.aliases.cache.forEach((cmd, alias) => {
+      client.commands.delete(command); //knk ben anlamadm ya
+      client.aliases.forEach((cmd, alias) => {
         if (cmd === command) client.aliases.delete(alias);
       });
       resolve();
@@ -134,9 +134,6 @@ client.on("error", e => {
 
 client.login(ayarlar.token);
 //-------------—------------—---—————-------KOMUTLAR-----------------------------------------//
-client.on("ready", () => {
-  client.channels.get("759799957036597284").join();
-});
 client.on("message", msg => {
   var dm = client.channels.get("766192101708529695");
   if (msg.channel.type === "dm") {
