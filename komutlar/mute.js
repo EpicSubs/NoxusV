@@ -1,46 +1,32 @@
 const Discord = require("discord.js");
-const db = require("wio.db");
 const ms = require("ms");
-//bu  v11 bu la
-exports.run = async (client, message, args) => {
-  var rol = await db.fetch(`muteyetkilirol_${message.guild.id}`, rol);
-  let rol2 = message.guild.roles.find("id", rol);
-  if (
-    !message.member.roles.has(
-      db.fetch(`muteyetkilirol_${message.guild.id}`, rol)
-    )
-  )
-    return message.channel.send(
-      new Discord.MessageEmbed()
-        .setColor("ff0000")
-        .setDescription(
-          "Bu Komutu Kullanmak İçin mute yetkili rolde bulunmanız gerekmektedir \n henüz ayarlı değilse : `n!mute-yetkili-rol @rol`"
-        )
-    );
+const ayarlar = require("../ayarlar.json");
+const prefix = ayarlar.prefix;
 
-  let tomute = message.guild.member(
+var mutelirolu = "Mute"; //MUTELENDİGİ ZAMAN VERİLECEK ROLU  BURAYA YAZINIZ...
+
+module.exports.run = (bot, message, args) => {
+  let mutekisi = message.guild.member(
     message.mentions.users.first() || message.guild.members.get(args[0])
   );
-  let sebep = args[2];
-  if (!tomute)
+  if (!mutekisi)
     return message.reply(
-      "🚫| Yanlış komut!\n✔| Doğru Kullanım:  ``!mute <@Kullanıcı> <Süre> <sebep>`` Olarak Yazmalısınız."
+      `<a:emoji:754599471580446810> Lütfen bir kullanıcı etiketleyiniz! \nDoğru Kullanım; \`mute <@kullanıcı> <1sn/1dk/1sa/1g>\``
     );
-  if (tomute.hasPermission("MANAGE_MESSAGES"))
+  if (mutekisi.hasPermission("MANAGE_MESSAGES"))
     return message.reply(
-      "🚫 Bu kullanıcıyı muteleyemem. \nSebepleri Şunlar Olabilir;\n  🚫| Bu kullanıcının rolü benim rolümden yüksek olabilir,\n  🚫| Kullanıcı ben olabilirim,\n  🚫| Kullanıcı ile aynı rolde olabiliriz."
+      `<a:emoji:754599471580446810> Yetkili bir kişiyi muteleyemem! \nDoğru Kullanım; \`mute <@kullanıcı> <1sn/1dk/1sa/1g>\``
     );
-  let muterole = message.guild.roles.find(r => r.name === "Mute | Susturulmuş");
-
-  if (!muterole) {
+  let muterol = message.guild.roles.cache.find(`name`, mutelirolu);
+  if (!muterol) {
     try {
-      muterole = await message.guild.createRole({
-        name: "Mute | Susturulmuş",
-        color: "#818386",
+      muterol = message.guild.roles.create({
+        name: mutelirolu,
+        color: "#000000",
         permissions: []
       });
-      message.guild.channels.forEach(async (channel, id) => {
-        await channel.overwritePermissions(muterole, {
+      message.guild.channels.cache.forEach(async (channel, id) => {
+        channel.overwritePermissions(muterol, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false
         });
@@ -49,61 +35,39 @@ exports.run = async (client, message, args) => {
       console.log(e.stack);
     }
   }
+  let mutezaman = args[1]
+    .replace(`sn`, `s`)
+    .replace(`dk`, `m`)
+    .replace(`sa`, `h`)
+    .replace(`g`, `d`);
 
-  let mutetime = args[1];
-  if (!mutetime)
+  if (!mutezaman)
     return message.reply(
-      "🚫 | Yanlış komut!\n✔| Doğru Kullanım:  ``z!sustur <@Kullanıcı> <Süre> <sebep>`` Olarak Yazmalısınız."
-    );
-
-  await tomute.addRole(muterole.id);
+      `<a:emoji:754599471580446810> Lütfen bir zaman giriniz! \nDoğru Kullanım; \`mute <@kullanıcı> <1sn/1dk/1sa/1g>\``
+    )(mutekisi.roles.add(muterol.id));
   message.reply(
-    `**:white_check_mark:| Başarılı**\n\n✔| <@${
-      tomute.id
-    }> Kullanıcı başarılı şekilde mutelendi. \n✔| Mute süresi; ${ms(
-      ms(mutetime)
-    )}`
+    `<a:emoji:759035318556688405><@${mutekisi.id}> kullanıcısı ${
+      args[1]
+    } süresi boyunca mutelendi!`
   );
 
   setTimeout(function() {
-    tomute.removeRole(muterole.id);
+    mutekisi.roles.remove(muterol.id);
     message.channel.send(
-      `:white_check_mark: | <@${tomute.id}> Kişinin susturulma süresi doldu!\n:white_check_mark: | \`Mute | Susturulmuş\` rolü alındı!`
+      `<a:emoji:759035318556688405><@${mutekisi.id}> kullanıcısının mutelenme süresi sona erdi!`
     );
-  }, ms(mutetime));
-  //message.channel.find("va-log")
-
-  let user = message.mentions.users.first();
-
-  let mutelog = db.get(`mutelog_${message.guild.id}`);
-  const mute_log = client.channels.get(mutelog);
-  mute_log.send(
-    new Discord.MessageEmbed()
-      .setColor("BLACK")
-      .setTimestamp()
-      .addField("Eylem:", "Mute atma")
-      .addField(
-        "Kullanıcı:",
-        `${user.username}#${user.discriminator} (${user.id})`
-      )
-      .addField(
-        "Yetkili:",
-        `${message.author.username}#${message.author.discriminator}`
-      )
-      .addField("Sebep", sebep)
-  );
+  }, ms(mutezaman));
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 2
+  permLevel: 0
 };
 
 exports.help = {
   name: "mute",
-  category: "Mod",
-  description: "İstediğiniz kişiyi uyarır.",
-  usage: "uyar <@kişi-etiket> <sebep>"
+  description: "Etiketlediğiniz kişiye belirttiğiniz süre kadar muteler.",
+  usage: "mute @kullanıcı 1sn-1dk-1sa-1g"
 };
