@@ -105,7 +105,6 @@ client.unload = command => {
     }
   });
 };
-
 client.elevation = message => {
   if (!message.guild) {
     return;
@@ -134,23 +133,6 @@ client.on("error", e => {
 
 client.login(ayarlar.token);
 //-------------—------------—---—————-------KOMUTLAR-----------------------------------------//
-client.on("message", msg => {
-  var dm = client.channels.get("766192101708529695");
-  if (msg.channel.type === "dm") {
-    if (msg.author.id === client.user.id) return;
-    const botdm = new Discord.MessageEmbed()
-      .setTitle(`${client.user.username} Gelen Dm`)
-      .setTimestamp()
-      .setColor("BLUE")
-      .setThumbnail(`${msg.author.avatarURL()}`)
-      .addField("Mesaj Atan", msg.author.tag)
-      .addField("Mesaj Atanın İDsi", msg.author.id)
-      .addField("Gönderilen Mesaj", msg.content);
-
-    dm.send(botdm);
-  }
-  if (msg.channel.bot) return;
-});
 //glitch.com/edit/#!/join/6db097ce-066e-4ffa-a
 client.on("message", message => {
   if (message.content.toLowerCase() === "<@590847090205392896>") {
