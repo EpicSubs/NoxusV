@@ -48,7 +48,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 
   if (kisi.id === message.author.id) {
     const hata = new Discord.MessageEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(`Kendinizi kayıt edemezsiniz!`)
       .setColor("RED")
       .setTimestamp();
@@ -64,21 +64,21 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
       .reply(`Etiketlediğin Kullanıcı Ses Kanalına Bağlı Değil.`)
       .catch(console.error);
 
-  const embed22 = new Discord.RichEmbed()
+  const embed22 = new Discord.MessageEmbed()
     .setTitle(`Sen Harikasın!`)
     .setDescription(
       `**Kayıt Edilen Kullanıcı** ${kisi}  \n**Kayıt İşleminde Verilen Rol** <@&${mutel}>`
     )
     .setFooter(
       `Komutu kullanan yetkili : ${message.author.username}`,
-      message.author.avatarURL
+      message.author.avatarURL()
     )
-    .setAuthor(message.author.username, message.author.avatarURL)
+    .setAuthor(message.author.username, message.author.avatarURL())
     .setColor("GREEN")
     .setThumbnail(message.author.avatarURL);
   message.channel.send(embed22);
 
-  kisi.addRole(mutel).then(y => y.removeRole(kayitsiz));
+  kisi.roles.add(mutel).then(y => y.roles.remove(kayitsiz));
 
   /*
 !!
@@ -86,7 +86,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 !!
 */
 
-  const yar = new Discord.RichEmbed()
+  const yar = new Discord.MessageEmbed()
     .setTitle(`Sunucu Kayıt Log`)
     .setDescription(
       `
@@ -96,7 +96,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
     )
     .setColor("#F1F10D")
     .setTimestamp()
-    .setThumbnail(client.user.avatarURL);
+    .setThumbnail(client.user.avatarURL());
   client.channels.get("modlog").send(yar);
   db.set(`muteee.${kisi.id}`, "var");
   db.add(`kadınpuan_${message.guild.id}_${message.author.id}`, 1);

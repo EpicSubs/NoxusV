@@ -4,11 +4,11 @@ exports.run = (client, message, args) => {
   let mesaj = args.slice(0).join(" ");
   if (mesaj.length < 1) return message.reply("Yazmam İçin Birşey Yazmalısın!");
   message.delete();
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("")
     .setColor(3447003)
     .setDescription(`${mesaj}`);
-  return message.channel.sendEmbed(embed);
+  return message.channel.send(embed);
 };
 
 exports.conf = {

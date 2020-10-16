@@ -14,8 +14,8 @@ exports.run = async (client, message, args) => {
   const rol = message.mentions.roles.first();
 
   if (!rol) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}erkek-role @roletiket\`\`\``
       )
@@ -24,8 +24,8 @@ exports.run = async (client, message, args) => {
     return message.channel.send(hata);
   }
   db.set(`erkekRol.${message.guild.id}`, rol.id);
-  const embed = new Discord.RichEmbed()
-    .setAuthor(`İşte bu kadar!`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`İşte bu kadar!`, message.author.avatarURL())
     .setDescription(`Kayıt da kullanılacak: ${rol} rolü olarak seçtiniz!`)
     .setTimestamp()
     .setColor("GREEN");

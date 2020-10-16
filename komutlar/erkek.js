@@ -16,8 +16,8 @@ exports.run = async (client, message, args) => {
   if (!yetkili) return;
   if (!mutel) return;
   if (!message.member.roles.has(yetkili)) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Bu komut için yetersiz izniniz bulunuyor! Yetkili rolüne sahip olmalısınız!`
       )
@@ -33,8 +33,8 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 
   let kisi = message.mentions.members.first();
   if (!kisi) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Lütfen bir kullanıcıyı etiketleyin!\n\n**Örnek Kullanım:** \n\`\`\`${prefix}erkek @kullanıcı\`\`\` `
       )
@@ -49,8 +49,8 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 */
 
   if (kisi.id === message.author.id) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(`Kendinizi kayıt edemezsiniz!`)
       .setColor("RED")
       .setTimestamp();
@@ -66,17 +66,17 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
       .reply(`Etiketlediğin Kullanıcı Ses Kanalına Bağlı Değil.`)
       .catch(console.error);
 
-  const embed22 = new Discord.RichEmbed()
+  const embed22 = new Discord.MessageEmbed()
     .setTitle(`Sen Harikasın!`)
     .setDescription(
       `**Kayıt Edilen Kullanıcı** ${kisi}  \n**Kayıt İşleminde Verilen Rol** <@&${mutel}>`
     )
     .setFooter(`Komutu kullanan yetkili : ${message.author.username}`)
-    .setThumbnail(client.user.avatarURL)
+    .setThumbnail(client.user.avatarURL())
     .setColor("GREEN");
   message.channel.send(embed22);
 
-  kisi.addRole(mutel).then(y => y.removeRole(kayitsiz));
+  kisi.roles.add(mutel).then(y => y.roles.remove(kayitsiz));
 
   /*
 !!
@@ -84,7 +84,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 !!
 */
 
-  const yar = new Discord.RichEmbed()
+  const yar = new Discord.MessageEmbed()
     .setTitle(`Sunucu Kayıt Log`)
     .setDescription(
       `
@@ -94,7 +94,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
     )
     .setColor("#F1F10D")
     .setTimestamp()
-    .setThumbnail(client.user.avatarURL);
+    .setThumbnail(client.user.avatarURL());
   client.channels.get(modlog).send(yar);
   db.set(`muteee.${kisi.id}`, "var");
   db.add(`erkekpuan_${message.guild.id}_${message.author.id}`, 1);

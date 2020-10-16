@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 exports.run = async (client, message) => {
   let prefix = "n!";
 
-  const noxus = new Discord.RichEmbed()
+  const noxus = new Discord.MessageEmbed()
 
     .addField(
       "Noxus Botumuzu Sizde Sunucunuza Ekleyin",
