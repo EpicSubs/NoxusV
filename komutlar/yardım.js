@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
     "**BOT** \n <a:hypesquad:757932784949133433> n!istatistik \n <a:hypesquad:757932784949133433> n!ping \n <a:hypesquad:757932784949133433> n!yapımcım"
   ];
   let page = 1; //naptın ? knk bi dur mmm ekliyommmmmmmmmmmmmmmmemojiyi omekliy
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setThumbnail(
       "https://cdn.discordapom/attachments/487719679868272689/488329963926192158/image0.png"

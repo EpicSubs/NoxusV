@@ -36,7 +36,7 @@ exports.run = async (client, message) => {
           errors: ["time"]
         })
         .then(collected => {
-          let room = message.guild.channels.find(
+          let room = message.guild.channels.cache.find(
             "name",
             collected.first().content
           );
@@ -88,7 +88,7 @@ exports.run = async (client, message) => {
                               )
                               .setFooter(
                                 message.author.username + " (Noxus)",
-                                message.author.avatarURL
+                                message.author.avatarURL()
                               );
                             message.guild.channels
                               .find("name", room)
@@ -115,7 +115,7 @@ exports.run = async (client, message) => {
                                   let endEmbed = new Discord.MessageEmbed()
                                     .setAuthor(
                                       message.author.username,
-                                      message.author.avatarURL
+                                      message.author.avatarURL()
                                     )
                                     .setTitle(title)
                                     .setColor("#f558c9")

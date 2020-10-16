@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 exports.run = (client, message) => {
   if (message.channel.type !== "dm") {
-    const noxus = new Discord.RichEmbed()
+    const noxus = new Discord.MessageEmbed()
       .setAuthor(message.author.username)
       .setColor("GOLD")
       .setTimestamp()
@@ -12,7 +12,7 @@ exports.run = (client, message) => {
         "**Yapımcım: **",
         `<@590847090205392896> <@749966727881687070>`
       );
-    message.channel.sendEmbed(noxus);
+    message.channel.send(noxus);
   }
 };
 
