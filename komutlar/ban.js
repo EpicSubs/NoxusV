@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
   //if (!message.guild.member(user).bannable) return message.reply('Yetkilileri yasaklayamam!');
   message.guild.ban(user, 2);
 
-  const embed2 = new Discord.RichEmbed()
+  const embed2 = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(`Başarıyla banlandı`);
   message.channel.send(embed2);

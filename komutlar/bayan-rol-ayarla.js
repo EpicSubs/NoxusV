@@ -8,14 +8,14 @@ exports.run = async (client, message, args) => {
     ayarlar.prefix;
 
   if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
+    const ozelmesajuyari = new Discord.MessageEmbed()
       .setColor(0x2488e7)
       .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL)
+      .setAuthor(message.author.username, message.author.avatarURL())
       .addField(
         "Sadece herhangi bir sunucudan mesaj gönderebilirim.:relaxed: "
       );
-    return message.author.sendEmbed(ozelmesajuyari);
+    return message.author.send(ozelmesajuyari);
   }
 
   if (!message.member.permissions.has("MANAGE_GUILD"))
@@ -24,12 +24,12 @@ exports.run = async (client, message, args) => {
     );
 
   let rol =
-    message.mentions.roles.first() || message.guild.roles.get(args.join(" "));
+    message.mentions.roles.first() || message.guild.roles.cache.get(args.join(" "));
   let newRole;
   let tworole;
   if (!rol) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kadın-role @roletiket\`\`\``
       )
@@ -40,9 +40,9 @@ exports.run = async (client, message, args) => {
   let isim = message.mentions.roles.first().name;
   db.set(`kayıtisim.${message.guild.id}`, isim);
   let otorol = await db.set(`kadınRol.${message.guild.id}`, newRole);
-  if (!message.guild.roles.get(newRole)) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+  if (!message.guild.roles.cache.get(newRole)) {
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Etiketlediğiniz rol bulunamadı, etiketlediğiniz rolün etiketlenebilirliğinin aktif olduğundan emin olunuz`
       )
@@ -50,8 +50,8 @@ exports.run = async (client, message, args) => {
       .setTimestamp();
     return message.channel.send(hata);
   }
-  const embed = new Discord.RichEmbed()
-    .setTitle(`İşte bu kadar!`, message.author.avatarURL)
+  const embed = new Discord.MessageEmbed()
+    .setTitle(`İşte bu kadar!`, message.author.avatarURL())
     .setDescription(
       `Kayıt da kullanılacak: <@&${newRole}> rolü olarak seçtiniz!`
     )

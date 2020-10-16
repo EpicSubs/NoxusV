@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     var s = member2.user;
   }
   if (!member) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Ölçmek İçin Birini Etiketlemelisin Mesala @deneme gibi`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
   if (anasonuc < 20) {
     var yorum = "Bu iş olmaz sen bunu unut.";
   }
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor(`${member.user.tag} | ${s.tag}`)
     .setDescription(`Aşk Yüzdesi: ${anasonuc}\n${kalp}${akalp}\n\n${yorum}`)
     .setColor("RANDOM")

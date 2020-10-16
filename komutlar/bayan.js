@@ -20,8 +20,8 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
   if (!yetkili) return;
   if (!mutel) return;
   if (!message.member.roles.has(yetkili)) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Bu komut için yetersiz izniniz bulunuyor! Yetkili rolüne sahip olmalısınız!`
       )
@@ -31,8 +31,8 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
   }
   let kisi = message.mentions.members.first();
   if (!kisi) {
-    const hata = new Discord.RichEmbed()
-      .setAuthor("HATA", message.author.avatarURL)
+    const hata = new Discord.MessageEmbed()
+      .setAuthor("HATA", message.author.avatarURL())
       .setDescription(
         `Lütfen bir kullanıcıyı etiketleyin!\n\n**Örnek Kullanım:** \n\`\`\`${prefix}kadın @kullanıcı\`\`\` `
       )
@@ -47,7 +47,7 @@ EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
 */
 
   if (kisi.id === message.author.id) {
-    const hata = new Discord.RichEmbed()
+    const hata = new Discord.MessageEmbed()
       .setAuthor("HATA", message.author.avatarURL)
       .setDescription(`Kendinizi kayıt edemezsiniz!`)
       .setColor("RED")

@@ -9,11 +9,11 @@ exports.run = (client, message, args) => {
     user = message.author;
   }
 
-  const avatar = new Discord.()
+  const avatar = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor("Al Napcaksan Artık Yavşama Ha")
     .setImage(user.avatarURL());
-  message.channel.sendEmbed(avatar);
+  message.channel.send(avatar);
 };
 
 exports.conf = {
