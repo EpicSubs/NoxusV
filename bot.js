@@ -95,7 +95,7 @@ client.unload = command => {
     try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command); //knk ben anlamadm ya
+      client.commands.delete(command);
       client.aliases.forEach((cmd, alias) => {
         if (cmd === command) client.aliases.delete(alias);
       });
