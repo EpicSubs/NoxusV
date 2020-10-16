@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
 
       .replace(".hedef.", sayi);
 
-    const embed = new discord.RichEmbed()
+    const embed = new discord.MessageEmbed()
 
       .setColor("RED")
 

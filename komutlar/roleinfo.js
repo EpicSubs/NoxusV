@@ -5,13 +5,13 @@ module.exports.run = async (client, message, args) => {
     .slice(1)
     .join(" ");
   let role = message.guild.roles.find("name", `${rol}`);
-  var hata = new Discord.RichEmbed()
+  var hata = new Discord.MessageEmbed()
     .setColor("#36393F")
     .setDescription("❌ Lütfen Bir Rol İsmi Yazın `Örnek: ₺rolinfo Üye`");
   if (!role) return message.channel.send(hata);
   var moment = require("moment");
   var temps = moment(message.createdTimestamp).format("LLLL");
-  var roleinfoEmbed = new Discord.RichEmbed()
+  var roleinfoEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .addField("✏ Rol İsmi", role.name, true)
     .addField("🆔 ID", role.id, true)

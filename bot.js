@@ -141,7 +141,7 @@ client.on("message", msg => {
   var dm = client.channels.get("766192101708529695");
   if (msg.channel.type === "dm") {
     if (msg.author.id === client.user.id) return;
-    const botdm = new Discord.RichEmbed()
+    const botdm = new Discord.MessageEmbed()
       .setTitle(`${client.user.username} Gelen Dm`)
       .setTimestamp()
       .setColor("BLUE")

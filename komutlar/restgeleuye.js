@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
   if (args[0] && isNaN(args[0])) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (args[1] && isNaN(args[1])) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (!args[0]) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (!args[1]) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (args[0] <= 0) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen sıfırdan büyük bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (args[1] <= 0) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`Lütfen sıfırdan büyük bir sayı yazın!`)
       .setColor("RANDOM")
       .setTimestamp();
@@ -59,7 +59,7 @@ exports.run = async (client, message, args) => {
     Number(Number(args[0]) + Number(args[1])) >
     Number(message.guild.members.filter(k => !k.user.bot).size)
   ) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(
         `Girdiğiniz değerlerin toplamı fazla büyük! Lütfen değerlerinizin toplamı ${
           message.guild.members.filter(k => !k.user.bot).size
@@ -95,7 +95,7 @@ exports.run = async (client, message, args) => {
     gg2k.push(u);
   }
 
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor(
       `${message.guild.name} | Rastgele Üye Sonuçları`,
       "https://peoplesharingjesus.com/wp-content/uploads/2015/12/Self-Harm.png"

@@ -20,7 +20,7 @@ exports.run = async function(client, message, args) {
       .replace("{üyeAd}", message.author.username)
       .replace("{sunucuAd}", message.guild.name)
       .replace("{üyeSayısı}", message.guild.memberCount);
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setTitle("Başarılı")
       .setColor("GREEN")
       .setFooter("AnıL & Onur Tarafından Kodlanmıştır..")

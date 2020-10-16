@@ -81,7 +81,7 @@ exports.run = async (client, message) => {
                           msg.delete();
                           message.delete();
                           try {
-                            let giveEmbed = new Discord.RichEmbed()
+                            let giveEmbed = new Discord.MessageEmbed()
                               .setColor("#f558c9")
                               .setDescription(
                                 `**Ödül: ${title}** \n🎉'a Basarak Katıl \nKalan Süre : ${duration} \n **Başlama Zamanı :** ${hours}:${minutes}:${seconds} ${suffix}`
@@ -112,7 +112,7 @@ exports.run = async (client, message) => {
                                       Math.floor(Math.random() * list.length) +
                                         0
                                     ];
-                                  let endEmbed = new Discord.RichEmbed()
+                                  let endEmbed = new Discord.MessageEmbed()
                                     .setAuthor(
                                       message.author.username,
                                       message.author.avatarURL
@@ -129,7 +129,7 @@ exports.run = async (client, message) => {
                                     embed: endEmbed
                                   });
 
-                                  var embedLel = new Discord.RichEmbed()
+                                  var embedLel = new Discord.MessageEmbed()
                                     .setColor("#f558c9")
                                     .setDescription(
                                       "Ödülünü Moderatörleri Etiketleyerek Alabilirsin!"

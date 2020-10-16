@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
         member.user.username
       )
   );
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .addField(
       "Oynuyor Mesajı Reklam İçeren Kullanıcılar",
       members

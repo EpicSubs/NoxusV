@@ -3,9 +3,9 @@ const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   const useruser =
     "Komut " + message.author.username + " tarafından çalıştırıldı";
-  const userurl = message.author.avatarURL;
+  const userurl = message.author.avatarURL();
   const bayrak = ":flag_tr:";
-  const ping = `${Math.round(client.ping)}ms`;
+  const ping = `${Math.round(client.ws.ping)}ms`;
 
   let embed = new Discord.MessageEmbed()
     .setTitle(":shield: Anlık Gecikme Süresi :shield:")

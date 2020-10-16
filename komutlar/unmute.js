@@ -11,8 +11,8 @@ module.exports.run = async (bot, message, args) => {
     message.mentions.users.first() || message.guild.members.get(args[0])
   );
   if (!user)
-    return message.channel.sendEmbed(
-      new Discord.RichEmbed()
+    return message.channel.send(
+      new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor("Hata")
         .setDescription(`Kullanıcı Bulunamadı`)
@@ -21,27 +21,27 @@ module.exports.run = async (bot, message, args) => {
     .split(" ")
     .slice(2)
     .join(" ");
-  if (!user.roles.find(`name`, "Susturulmuş"))
-    return message.channel.sendEmbed(
-      new Discord.RichEmbed().setColor("RANDOM").setTitle("Kişi Mutelenmemiş")
+  if (!user.roles.cache.find(`name`, "Susturulmuş"))
+    return message.channel.send(
+      new Discord.MessageEmbed().setColor("RANDOM").setTitle("Kişi Mutelenmemiş")
     );
   if (!reason)
     return message.channel.sendEmbed(
-      new Discord.RichEmbed()
+      new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor("Hata")
         .setDescription(`Unmute Sebebini Yazmalısın`)
     );
-  let muterole = message.guild.roles.find(`name`, "Susturulmuş");
+  let muterole = message.guild.roles.cache.find(`name`, "Susturulmuş");
 
   if (!muterole) {
     try {
-      muterole = await message.guild.createRole({
+      muterole = await message.guild.roles.create({
         name: "Susturulmuş",
         color: "#000000",
         permissions: []
       });
-      message.guild.channels.forEach(async (channel, id) => {
+      message.guild.channels.cache.forEach(async (channel, id) => {
         await channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false
@@ -52,8 +52,8 @@ module.exports.run = async (bot, message, args) => {
     }
   }
 
-  await user.removeRole(muterole.id);
-  const muteembed = new Discord.RichEmbed()
+  await user.roles.remove(muterole.id);
+  const muteembed = new Discord.MessageEmbed()
     .setAuthor("Eylem: Unmute")
     .addField("Kullanıcı", `<@${user.id}>`)
     .addField("Sebep", `${reason}`)
