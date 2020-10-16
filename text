@@ -1,0 +1,98 @@
+
+Update discord.js from: 11 => 12
+
+==================================
+
+Cache 
+
+users.get --> users.cache.get
+
+channels.find --> channels.cache.find 
+
+roles.find --> roles.cache.find 
+
+message.get --> messages.cache.get
+
+users.exists --> users.cache.some
+
+forEach --> cache.forEach   knk hepsini nasıl bilcem yaaaaaaa
+
+==================================
+
+fetch
+
+fetchUser --> users.fetch
+
+fetchMember --> members.fetch
+
+fetchMessage --> messages.fetch
+
+fetchPinnedMessages --> messages.fetchPinned
+
+==================================
+
+send
+
+sendFile --> send({files["./Hello.png"]})
+
+sendEmbed --> send
+
+sendMessage --> send
+
+==================================
+
+roles
+
+createRole --> roles.create
+
+addRole --> roles.add
+
+removeRole --> roles.remove
+
+highestRole --> roles.highest
+
+colorRole --> roles.color
+
+roles.get --> roles.cache.get
+
+==================================
+
+URL
+
+avatarURL --> avatarURL()
+
+displayAvatarURL --> displayAvatarURL()
+
+iconURL --> iconURL()
+
+==================================
+
+embed
+
+RichEmbed --> MessageEmbed
+
+==================================
+
+ws
+
+client.ping --> client.ws.ping
+
+client.uptime --> client.ws.ping
+
+client.status --> client.ws.status
+
+==================================
+
+voice
+
+voiceConnections --> voice.connections
+
+==================================
+
+
+al kendin yapabilirsin artik boyle olcak
+1. yazanlar v11 2. yazanlar v12
+
+hadi hizli olak burayi silecem
+ben bot.js sen lar okkomut
+ok ama ben hepsini nerden bilcem qweweqqwe

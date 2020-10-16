@@ -45,11 +45,11 @@ client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
   log(`${files.length} komut yüklenecek.`);
-  files.forEach(f => {
+  files.cache.forEach(f => {
     let props = require(`./komutlar/${f}`);
     log(`Yüklenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
-    props.conf.aliases.forEach(alias => {
+    props.conf.aliases.cache.forEach(alias => {
       client.aliases.set(alias, props.help.name);
     });
   });
@@ -61,11 +61,11 @@ client.reload = command => {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
       client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
+      client.aliases.cache.forEach((cmd, alias) => {
         if (cmd === command) client.aliases.delete(alias);
       });
       client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
+      cmd.conf.aliases.cache.forEach(alias => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
@@ -80,7 +80,7 @@ client.load = command => {
     try {
       let cmd = require(`./komutlar/${command}`);
       client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
+      cmd.conf.aliases.cache.forEach(alias => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
@@ -95,8 +95,8 @@ client.unload = command => {
     try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
+      client.commands.delete(command);//knk ben anlamadm ya 
+      client.aliases.cache.forEach((cmd, alias) => {
         if (cmd === command) client.aliases.delete(alias);
       });
       resolve();
@@ -145,7 +145,7 @@ client.on("message", msg => {
       .setTitle(`${client.user.username} Gelen Dm`)
       .setTimestamp()
       .setColor("BLUE")
-      .setThumbnail(`${msg.author.avatarURL}`)
+      .setThumbnail(`${msg.author.avatarURL()}`)
       .addField("Mesaj Atan", msg.author.tag)
       .addField("Mesaj Atanın İDsi", msg.author.id)
       .addField("Gönderilen Mesaj", msg.content);
@@ -215,12 +215,12 @@ client.on("message", async msg => {
       try {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
           msg.delete();
-          let embed = new Discord.RichEmbed()
+          let embed = new Discord.MessageEmbed()
             .setColor(0xffa300)
-            .setFooter("Reklam engellendi.", client.user.avatarURL)
+            .setFooter("Reklam engellendi.", client.user.avatarURL())
             .setAuthor(
               msg.guild.owner.user.username,
-              msg.guild.owner.user.avatarURL
+              msg.guild.owner.user.avatarURL()
             )
             .setDescription(
               "Reklam sistemi, " +
@@ -272,12 +272,12 @@ client.on("message", async msg => {
       try {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
           msg.delete();
-          let embed = new Discord.RichEmbed()
+          let embed = new Discord.MessageEmbed()
             .setColor(0xffa300)
-            .setFooter("  Küfür Engel.", client.user.avatarURL)
+            .setFooter("  Küfür Engel.", client.user.avatarURL())
             .setAuthor(
               msg.guild.owner.user.username,
-              msg.guild.owner.user.avatarURL
+              msg.guild.owner.user.avatarURL()
             )
             .setDescription(
               "Küfür sistemi " +
