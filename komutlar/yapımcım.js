@@ -9,7 +9,7 @@ exports.run = (client, message) => {
       .setColor("GOLD")
       .setTimestamp()
       .addField(
-        "**Yapımcım: **",
+        "**Yapımcılarım: **",
         `<@590847090205392896> <@749966727881687070>`
       );
     message.channel.send(noxus);
@@ -19,12 +19,12 @@ exports.run = (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["yapımcım"],
+  aliases: ["yapımcımlarım"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "yapımcım",
+  name: "yapımcılarım",
   description: "Yapımcıyı Gösterir.",
-  usage: "prefix yapımcım"
+  usage: "prefix yapımcılarım"
 };
