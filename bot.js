@@ -8,7 +8,7 @@ app.get("/", (request, response) => {
 app.listen(process.env.PORT);
 setInterval(() => {
   //dokunma al
-  http.get("https://ionized-rose-ocean.glitch.me");
+  http.get(`http://jewel-boatneck-duck.glitch.me/`);
 }, 280000);
 
 const Discord = require("discord.js");
