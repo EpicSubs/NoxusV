@@ -134,14 +134,6 @@ client.on("error", e => {
 client.login(ayarlar.token);
 //-------------—------------—---—————-------KOMUTLAR-----------------------------------------//
 //glitch.com/edit/#!/join/6db097ce-066e-4ffa-a
-client.on("message", message => {
-  if (message.content.toLowerCase() === "<@590847090205392896>") {
-    message.delete();
-    message.channel
-      .send(message.author + ",  Yapımcımı Etiketleme")
-      .then(message => message.delete(5000));
-  }
-});
 client.on("message", async (msg, member, guild) => {
   let i = await db.fetch(`saas_${msg.guild.id}`);
   if (i === "açık") {
