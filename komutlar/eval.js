@@ -1,73 +1,65 @@
 const Discord = require("discord.js");
 
-const ayarlar = require('../ayarlar.json')
+const ayarlar = require("../ayarlar.json");
 
-const db = require('wio.db')
+const db = require("wio.db");
 
 exports.run = async (client, message, args) => {
-
-  
-
-        if (message.author.id !== "763686983314702356","  ) return  message.channel.send('Bu Komutu Kullanmak İçin **`Sahibim`** Olman Lazım!')
+  if ((message.author.id !== ayarlar.sahip, ayarlar.sahip2)
+  if (message.author.id ! == ayarlar.sah);
+      
+      )
+    return message.channel.send(
+      "Bu Komutu Kullanmak İçin **`Sahibim`** Olman Lazım!"
+    );
 
   try {
-
     let codein = args.join(" ");
 
-    let code = eval(codein)
+    let code = eval(codein);
 
-    if (codein.length < 1) return message.channel.send('Bir kod girmelisin !')
+    if (codein.length < 1) return message.channel.send("Bir kod girmelisin !");
 
-    if (codein == 'client.token') return message.channel.send('Tokenim yok benim.')
+    if (codein == "client.token")
+      return message.channel.send("Tokenim yok benim.");
 
-    if (typeof code !== 'string')    
-
-      code = require('util').inspect(code, { depth: 0 });
+    if (typeof code !== "string")
+      code = require("util").inspect(code, { depth: 0 });
 
     let embed = new Discord.MessageEmbed()
 
-    .setColor('RANDOM')
+      .setColor("RANDOM")
 
-    .addField('Kod', `\`\`\`js\n${codein}\`\`\``)
+      .addField("Kod", `\`\`\`js\n${codein}\`\`\``)
 
-    .addField('Sonuç', `\`\`\`js\n${code}\n\`\`\``)
+      .addField("Sonuç", `\`\`\`js\n${code}\n\`\`\``);
 
-    message.channel.send(embed)
-
-  } catch(e) {
-
+    message.channel.send(embed);
+  } catch (e) {
     let embed2 = new Discord.MessageEmbed()
 
-    .setColor('RANDOM')
+      .setColor("RANDOM")
 
-    .addField('Hata', "\`\`\`js\n"+e+"\n\`\`\`")
+      .addField("Hata", "```js\n" + e + "\n```");
 
     message.channel.send(embed2);
-
   }
-
-}
+};
 
 exports.conf = {
+  enabled: true,
 
-    enabled: true,
+  guildOnly: false,
 
-    guildOnly: false,
+  aliases: [],
 
-    aliases: [],
+  permLevel: 0
+};
 
-    permLevel: 0
+exports.help = {
+  name: "eval",
 
-  };
+  description: "Kod denemeyi sağlar.",
 
-  
-
-  exports.help = {
-
-    name: 'eval',
-
-    description: 'Kod denemeyi sağlar.',
-
-    usage: 'eval <kod>'
-
-  }
+  usage: "eval <kod>"
+};
