@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
   
 
-        if (message.author.id !== "763686983314702356") return  message.channel.send('Bu Komutu Kullanmak İçin **`Sahibim`** Olman Lazım!')
+        if (message.author.id !== "763686983314702356","  ) return  message.channel.send('Bu Komutu Kullanmak İçin **`Sahibim`** Olman Lazım!')
 
   try {
 
