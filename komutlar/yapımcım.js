@@ -10,7 +10,7 @@ exports.run = (client, message) => {
       .setTimestamp()
       .addField(
         "**Yapımcılarım: **",
-        `<@590847090205392896> <@749966727881687070>`
+        `<@590847090205392896> | <@749966727881687070>(BIRAKTI)`
       );
     message.channel.send(noxus);
   }

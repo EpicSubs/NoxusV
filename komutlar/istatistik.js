@@ -18,7 +18,7 @@ let noxus = new Discord.MessageEmbed()
 
 .addField("Bot Geliştiricisi", `Bot geliştiricisi ➡ <@749966727881687070> \n Bot geliştiricisi ➡ <@590847090205392896> `)
 
-.addField("Sürümler", `Discord.js sürümü: **v${Discord.version}** \nNode.js sürümü: **${process.version}**`)
+.addField("Sürümler", `iscord.js sürümü: **v${Discord.version}** \nNode.js sürümü: **${process.version}**`)
 
 .addField("Gecikmeler", `Bot pingi: **${client.ws.ping}** \nMesaj gecikmesi: **${new Date().getTime() - message.createdTimestamp}**`)
 

@@ -16,10 +16,10 @@ module.exports = client => {
   );
   client.user.setStatus("dnd");
   var oyun = [
-    "✅Komut Ekleniyor✅",
-    "🔰n!yardım🔰",
-    "🚀Noxus İyi Eğlenceler Diler🚀",
-    ""
+    "Noxus Geri Dönüyor!!!!",
+    "n!yardım",
+    "Noxus İyi Eğlenceler Diler",
+    "Noxus Yeniden Doğuyor!!!!"
   ];
   //PLAYING Oynuyor //WATCHING İzliyor
   setInterval(function() {
