@@ -9,7 +9,8 @@ const cevaplar = [
   "Tabii ki",
   "Belki de",
   "Şimdi söylemeyeceğim",
-  "Odaklan ve tekrar sor"
+  "Odaklan ve tekrar sor",
+  "İyiyim Sen Nasılsın?"
 ];
 exports.run = function(client, message, args) {
   var soru = args.join(" ");
