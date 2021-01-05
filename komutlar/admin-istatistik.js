@@ -5,12 +5,6 @@ exports.run = async (client, message, args) => {
   let prefix =
     (await require("wio.db").fetch(`prefix.${message.guild.id}`)) ||
     ayarlar.prefix;
-  /*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-YOUTUBE: EMİRHAN SARAÇ
-!!
-*/
 
   const user = message.mentions.users.first() || message.author;
   if (!user)
@@ -20,12 +14,6 @@ YOUTUBE: EMİRHAN SARAÇ
         .setTitle("Hata :x:")
         .setDescription("Lütfen birisini etiketle!")
     );
-  /*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-YOUTUBE: EMİRHAN SARAÇ
-!!
-*/
 
   let erkek = db.get(`erkekpuan_${message.guild.id}_${user.id}`);
   let kız = db.get(`kadınpuan_${message.guild.id}_${user.id}`);
@@ -48,8 +36,3 @@ exports.help = {
   description: "Yetkililer hakkında bilgi verir.",
   type: "Yapılandırma"
 };
-/*
-!!
-EMİRHAN SARAÇ TARAFINDAN YAPILIP PAYLAŞILMIŞTIR!
-!!
-*/
