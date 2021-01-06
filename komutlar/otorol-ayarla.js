@@ -5,7 +5,7 @@ var sunucuyaözelayarlarOtorol = JSON.parse(
 );
 
 exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission("ADMINISTRATOR"))
+  if (!message.member.hasPermission("ADMİNİSTRATOR"))
     return message.channel.send(
       `**Bu Komutu Kullanabilmek İçin "\`Yönetici\`" Yetkisine Sahip Olmalısın.**`
     );
@@ -21,7 +21,7 @@ exports.run = async (bot, message, args) => {
     if (!mentionedRole)
       return message.channel.send(
         "**Doğru Kullanım = n!otorol-ayarla @<roladı> #<metinkanalı>!** ".then(
-          msg => msg.delete(5000)
+          msg => message.delete({ timeout: 100, reason: "Otorol Ayarlandı" })
         )
       );
 

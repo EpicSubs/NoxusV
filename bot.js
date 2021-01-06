@@ -283,7 +283,7 @@ client.on("guildMemberRemove", async member => {
     .setTitle("Otorol Sistemi")
     .setDescription(`**${member.user.tag}** Güle güle !!! Neden gittin ki ?  `)
     .setColor("GREEN")
-    .setFooter("Harmony ", client.user.avatarURL()());
+    .setFooter("Harmony", client.user.avatarURL());
 
   if (!giriscikis[member.guild.id].kanal) {
     return;
