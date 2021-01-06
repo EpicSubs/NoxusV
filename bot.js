@@ -274,3 +274,34 @@ client.on("message", async msg => {
   }
   if (!i) return;
 });
+client.on("guildMemberRemove", async member => {
+        let sayac = JSON.parse(fs.readFileSync("./otorol.json", "utf8"));
+  let otorole =  JSON.parse(fs.readFileSync("./otorol.json", "utf8"));
+      let arole = otorole[member.guild.id].sayi
+  let giriscikis = JSON.parse(fs.readFileSync("./otorol.json", "utf8"));
+  let embed = new Discord.RichEmbed()
+    .setTitle('Otorol Sistemi')
+    .setDescription(`**${member.user.tag}** Güle güle !!! Neden gittin ki <a:kizgin:612635055117959218>  `)
+.setColor("GREEN")
+    .setFooter("Harmony ", client.user.avatarURL);
+
+  if (!giriscikis[member.guild.id].kanal) {
+    return;
+  }
+
+  try {
+    let giriscikiskanalID = giriscikis[member.guild.id].kanal;
+    let giriscikiskanali = client.guilds.get(member.guild.id).channels.get(giriscikiskanalID);
+    giriscikiskanali.send(`**${member.user.tag}** Güle güle !!! Neden gittin ki <a:kizgin:612635055117959218> `);
+  } catch (e) { // eğer hata olursa bu hatayı öğrenmek için hatayı konsola gönderelim.
+    return console.log(e)
+  }
+
+});
+
+client.on("guildMemberAdd", async (member) => {
+      let autorole =  JSON.parse(fs.readFileSync("./otorol.json", "utf8"));
+      let role = autorole[member.guild.id].sayi
+
+      member.addRole(role)
+});
