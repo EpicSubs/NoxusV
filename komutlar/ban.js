@@ -16,9 +16,12 @@ exports.run = (client, message, args) => {
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
-  if (reason.length < 1) return message.reply("Ban sebebini yazmalısın.");
+  return message.reply("Ban sebebini yazmalısın.");
   if (message.mentions.users.cache.size < 1)
-    return message.reply("Kimi banlayacağını yazmalısın.").catch(console.error);
+    if (reason.length < 1)
+      return message
+        .reply("Kimi banlayacağını yazmalısın.")
+        .catch(console.error);
 
   if (!message.guild.member(user).members.bannable)
     return message.reply("Yetkilileri banlayamam.");
@@ -29,12 +32,15 @@ exports.run = (client, message, args) => {
     .setTimestamp()
     .addField("Eylem:", "Ban")
     .addField("Sebep", reason);
+  let modlog = guild.channels.cache.find("mod-log", "mod-log");
+  if (!modlog) return message.reply("mod-log kanalını bulamıyorum.");
+  return guild.channels.cache.get(modlog.id).send(embed);
 };
 
 exports.conf = {
   enabled: true,
-  guildOnly: true,
-  aliases: [],
+  guildOnly: false,
+  aliases: ["sg"],
   permLevel: 2
 };
 
