@@ -11,13 +11,13 @@ exports.run = (client, message, args) => {
   exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["help", "y", "h"],
+    aliases: ["yardım"],
     permLevel: 0
   };
 
   exports.help = {
-    name: "yardımü",
+    name: "yardım",
     description: "Yardım Listesini Gösterir",
-    usage: "yardımü"
+    usage: "yardım"
   };
 };
