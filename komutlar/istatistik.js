@@ -16,12 +16,12 @@ exports.run = async (client, message, args) => {
     .addField(
       "Veriler",
       `Toplam sunucu: **${
-        client.guilds.cache.size
-      }** \nToplam kullanıcı: **${client.guilds.cache
-        .reduce((a, b) => a + b.memberCount, 0)
-        .toLocaleString()}** \nToplam kanal: **${client.channels.cache.size}**`
+        client.guilds.cache.size} 
+        ** \nToplam kanal: **${client.channels.cache.size}**`
     )
-
+    .addField("Online Kullanıcı", `${client.users.cache.filter(users => users.presence.status == "online").size}`, true)
+     .addField("Offline Kullanıcı", `${client.users.cache.filter(users => users.presence.status == "offline").size}`, true)
+  
     .addField(
       "Bot Geliştiricisi",
       `Bot geliştiricisi ➡ <@749966727881687070> \n Bot geliştiricisi ➡ <@590847090205392896> `
