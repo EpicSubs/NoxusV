@@ -309,3 +309,11 @@ client.on("guildMemberAdd", async member => {
 
   member.roles.add(role);
 });
+//----------------Projeyi Aktif Tutma----------------\\
+const server = http.createServer((req, res) => {
+  if (req.url == "/uptime") {
+    res.write(`KemerBey Uptime Hizmetleri LTD. ŞTD. İNT. Tüm hakları saklıdır. Çalan olursa çalsın umrumda değil.`)
+ console.log('a request accepted.')
+    res.end()
+  }
+}).listen(8000)
