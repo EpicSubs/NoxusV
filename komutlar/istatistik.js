@@ -17,14 +17,14 @@ exports.run = async (client, message, args) => {
       "Veriler",
       `Toplam sunucu: **${
         client.guilds.cache.size
-      }** \nToplam kullanıcı: ${client.guilds.cache.size.toLocaleString()}  \n Toplam kanal: **${client.channels.cache.size}**`
+      }** \nToplam kullanıcı: ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} \n Toplam kanal: **${client.channels.cache.size}**`
     )
 
     .addField(
       "Bot Geliştiricisi",
       `Bot geliştiricisi ➡ <@749966727881687070> \n Bot geliştiricisi ➡ <@590847090205392896> `
     )
-
+  
     .addField(
       "Sürümler",
       `Discord.js sürümü: **v${Discord.version}** \nNode.js sürümü: **${process.version}**`
