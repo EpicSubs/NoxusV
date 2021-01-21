@@ -2,6 +2,10 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const db = require("wio.db");
 exports.run = async (client, message, args) => {
+   if (!message.member.hasPermission("ADMINISTRATOR"))
+    return message.channel.send(
+      ` Bu komudu kullanabilmek için "ADMINISTRATOR" yetkisine sahip olman gerek.`
+    );
   let Henor = message.mentions.users.first();
   let sebep = args.slice(1).join(" ");
 
@@ -9,7 +13,7 @@ exports.run = async (client, message, args) => {
     const Ottoman = new Discord.MessageEmbed().setDescription(
       "Kimi Kickleyeceğini Yazmalısın!"
     );
-    return message.channel.send(Ottoman)
+    return message.channel.send(Ottoman);
   }
 
   if (Henor.id === client.user.id) {
@@ -34,7 +38,7 @@ exports.run = async (client, message, args) => {
 
   message.guild.member(Henor).kick();
   const Henor4 = new Discord.MessageEmbed().setDescription(
-    `${Henor} adlı kişi başaryla ${sebep} sebebinden dolayı ${message.auhtor.tag} tarafından sunucudan Uçuruldu!`
+    `${Henor} adlı kişi başarıyla ${sebep} sebebinden dolayı ${message.auhtor.tag} tarafından sunucudan Uçuruldu!`
   );
   return message.channel.send(Henor4);
 };

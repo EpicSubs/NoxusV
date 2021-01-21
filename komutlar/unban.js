@@ -2,20 +2,23 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const db = require("wio.db");
 exports.run = async (client, message, args) => {
+  if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('Bu komutu kullanmak için gerekli yetkiye sahip değilsin')
   let Henor = args[0];
 
   if (!Henor) {
-    const Henor = new Discord.MessageEmbed().setDescription(
+    const Henoer = new Discord.MessageEmbed().setDescription(
       "Kimin Banını Açcam İd Versene"
     );
-    return message.channel.send(s);
+    
+    return message.channel.send(Henoer);
   }
 
   message.guild.members.unban(Henor);
+  
   const s = new Discord.MessageEmbed().setDescription(
     `${Henor} idli kişi ${message.author.tag} tarafından yasağı kaldırıldı`
   );
-  return message.channel.send(Henor);
+  return message.channel.send(s);
 };
 exports.conf = {
   enabled: true,

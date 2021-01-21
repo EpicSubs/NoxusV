@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 exports.run = (client, message, args) => {
+  if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('Bu komutu kullanmak için gerekli yetkiye sahip değilsin')
   if (!message.guild) {
     const ozelmesajuyari = new Discord.MessageEmbed()
       .setColor(0xff0000)
