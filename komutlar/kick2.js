@@ -1,54 +1,49 @@
 const Discord = require("discord.js");
-exports.run = (client, message, args) => {
-  if (!message.guild) {
-    const ozelmesajuyari = new Discord.MessageEmbed()
-      .setColor(0xff0000)
-      .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL())
-      .addField(
-        ":warning: Uyarı :warning:",
-        "`kick` adlı komutu özel mesajlarda kullanamazsın."
-      );
-    return message.author.send(ozelmesajuyari);
+const ayarlar = require("../ayarlar.json");
+const db = require("wio.db");
+exports.run = async (client, message, args) => {
+  let Henor = message.mentions.users.first();
+  let sebep = args.slice(1).join(" ");
+
+  if (!Henor) {
+    const Ottoman = new Discord.MessageEmbed().setDescription(
+      "Kimi Kickleyeceğini Yazmalısın!"
+    );
+    return message.channel.send(Ottoman)
   }
-  let guild = message.guild;
-  let reason = args.slice(1).join(" ");
-  let user = message.mentions.users.first();
-  let modlog = guild.channels.find("name", "ban-log");
-  if (!modlog) return message.reply("`ban-log` kanalı oluşturman lazım.");
-  if (reason.length < 1) return message.reply("niye kick adamı onu yazaydın.");
-  if (message.mentions.users.size < 1)
-    return message.reply("kimi kickleyecem onu yaz.").catch(console.error);
 
-  if (!message.guild.member(user).kickable)
-    return message.reply("Yetkilileri sunucudan atamam.");
-  message.guild.member(user).kick();
+  if (Henor.id === client.user.id) {
+    const Henor1 = new Discord.MessageEmbed().setDescription(
+      "Kendi Komutumla Benimi Vurcaktın"
+    );
+    return message.channel.send(Henor1);
+  }
+  if (Henor.id === message.author.id) {
+    const Henor2 = new Discord.MessageEmbed().setDescription(
+      "Dostum Kendini Kickleyemezssin!"
+    );
+    return message.channel.send(Henor2);
+  }
 
-  const embed = new Discord.MessageEmbed()
-    .setColor(0x00ae86)
-    .setTimestamp()
-    .addField("Eylem:", "Sunucudan atma")
-    .addField(
-      "Kullanıcı:",
-      `${user.username}#${user.discriminator} (${user.id})`
-    )
-    .addField(
-      "Yetkili:",
-      `${message.author.username}#${message.author.discriminator}`
-    )
-    .addField("Sebep", reason);
-  return guild.channels.get(modlog.id).send(embed);
+  if (!sebep) {
+    const Henor3 = new Discord.MessageEmbed().setDescription(
+      "Bir Sebep Belirtmelisin!"
+    );
+    return message.channel.send(Henor3);
+  }
+
+  message.guild.member(Henor).kick();
+  const Henor4 = new Discord.MessageEmbed().setDescription(
+    `${Henor} adlı kişi başaryla ${sebep} sebebinden dolayı ${message.auhtor.tag} tarafından sunucudan Uçuruldu!`
+  );
+  return message.channel.send(Henor4);
 };
-
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["at"],
+  aliases: [],
   permLevel: 2
 };
-
 exports.help = {
-  name: "kick",
-  description: "İstediğiniz kişiyi sunucudan atar.",
-  usage: "kick [kullanıcı] [sebep]"
+  name: "kick"
 };
