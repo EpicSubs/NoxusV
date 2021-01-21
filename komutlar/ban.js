@@ -16,25 +16,24 @@ exports.run = (client, message, args) => {
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
-  return message.reply("Ban sebebini yazmalısın.");
-  if (message.mentions.users.cache.size < 1)
-    if (reason.length < 1)
-      return message
-        .reply("Kimi banlayacağını yazmalısın.")
-        .catch(console.error);
+  
+      if (!args[0])return message.channel.send("Kimi banlayacağını yazmalısın.")
+ if(!reason) return message.reply("Ban sebebini yazmalısın.");
 
-  if (!message.guild.member(user).members.bannable)
-    return message.reply("Yetkilileri banlayamam.");
-  message.guild.members.ban(user, 2);
+
+
+
+
+  message.guild.members(user).ban;
 
   const embed = new Discord.MessageEmbed()
     .setColor(0x00ae86)
     .setTimestamp()
     .addField("Eylem:", "Ban")
     .addField("Sebep", reason);
-  let modlog = guild.channels.cache.find("mod-log", "mod-log");
-  if (!modlog) return message.reply("mod-log kanalını bulamıyorum.");
-  return guild.channels.cache.get(modlog.id).send(embed);
+
+  
+ message.channel.send(embed);
 };
 
 exports.conf = {

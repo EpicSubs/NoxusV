@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const db = require("wio.db");
 exports.run = async (client, message, args) => {
-  if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send('Bu komutu kullanmak için gerekli yetkiye sahip değilsin')
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+    return message.channel.send(
+      ` Bu komudu kullanabilmek için "ADMINISTRATOR" yetkisine sahip olman gerek.`
+    );
   let Henor = args[0];
 
   if (!Henor) {
