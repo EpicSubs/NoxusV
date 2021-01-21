@@ -16,15 +16,11 @@ exports.run = (client, message, args) => {
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
-  
-      if (!args[0])return message.channel.send("Kimi banlayacağını yazmalısın.")
- if(!reason) return message.reply("Ban sebebini yazmalısın.");
 
+  if (!args[0]) return message.channel.send("Kimi banlayacağını yazmalısın.");
+  if (!reason) return message.reply("Ban sebebini yazmalısın.");
 
-
-
-
-  message.guild.members(user).ban;
+  message.guild.member(user).ban();
 
   const embed = new Discord.MessageEmbed()
     .setColor(0x00ae86)
@@ -32,8 +28,7 @@ exports.run = (client, message, args) => {
     .addField("Eylem:", "Ban")
     .addField("Sebep", reason);
 
-  
- message.channel.send(embed);
+  message.channel.send(embed);
 };
 
 exports.conf = {

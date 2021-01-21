@@ -344,8 +344,8 @@ client.on("guildDelete", async function(guild) {
   const henor = new Discord.MessageEmbed()
     .setTitle(`Bir sunucudan atıldım`)
     .setColor("BLACK")
-    .addField(`Sunucu Adı`, guild.name)
-    .addField(`Sunucu Sahibi`, owner.username + "#" + owner.discriminator)
+    .addField(`**Sunucu Adı**`, guild.name)
+    .addField(`Sunucu Sahibi*`, owner.username + "#" + owner.discriminator)
     .addField(`Sunucu Üye Sayısı`, guild.memberCount);
   client.channels.cache
     .get(kanal)
