@@ -310,10 +310,45 @@ client.on("guildMemberAdd", async member => {
   member.roles.add(role);
 });
 //----------------Projeyi Aktif Tutma----------------\\
-const server = http.createServer((req, res) => {
-  if (req.url == "/uptime") {
-    res.write(`KemerBey Uptime Hizmetleri LTD. ŞTD. İNT. Tüm hakları saklıdır. Çalan olursa çalsın umrumda değil.`)
- console.log('a request accepted.')
-    res.end()
-  }
-}).listen(8000)
+const server = http
+  .createServer((req, res) => {
+    if (req.url == "/uptime") {
+      res.write(
+        `KemerBey Uptime Hizmetleri LTD. ŞTD. İNT. Tüm hakları saklıdır. Çalan olursa çalsın umrumda değil.`
+      );
+      console.log("a request accepted.");
+      res.end();
+    }
+  })
+  .listen(8000);
+client.on("guildCreate", async function(guild) {
+  const owner = client.users.cache.get(guild.ownerID);
+  const kanal = "782250112294060063"; //Eklendim mesajının atılacağı kanal ID'sini giriniz.
+  const henor = new Discord.MessageEmbed()
+    .setTitle(`Yeni bir sunucuya eklendim`)
+    .setColor("BLACK")
+    .addField(`Sunucu Adı`, guild.name)
+    .addField(`Sunucu Sahibi`, owner.username + "#" + owner.discriminator)
+    .addField(`Sunucu Üye Sayısı`, guild.memberCount);
+  client.channels.cache
+    .get(kanal)
+    .send({ embed: henor })
+    .catch(err => console.log("Kanala mesaj atamıyorum!"));
+});
+//
+
+//Atıldım
+client.on("guildDelete", async function(guild) {
+  const owner = client.users.cache.get(guild.ownerID);
+  const kanal = "782250112294060063"; //Atıldım mesajının atılacağı kanal ID'sini giriniz.
+  const henor = new Discord.MessageEmbed()
+    .setTitle(`Bir sunucudan atıldım`)
+    .setColor("BLACK")
+    .addField(`Sunucu Adı`, guild.name)
+    .addField(`Sunucu Sahibi`, owner.username + "#" + owner.discriminator)
+    .addField(`Sunucu Üye Sayısı`, guild.memberCount);
+  client.channels.cache
+    .get(kanal)
+    .send({ embed: henor })
+    .catch(err => console.log("Kanala mesaj atamıyorum!"));
+});
