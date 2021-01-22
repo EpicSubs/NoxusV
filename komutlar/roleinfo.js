@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
     .split(" ")
     .slice(1)
     .join(" ");
-  let role = message.guild.roles.find("name", `${rol}`);
+  let role = message.guild.roles.cache.find("name", `${rol}`);
   var hata = new Discord.MessageEmbed()
     .setColor("#36393F")
     .setDescription("❌ Lütfen Bir Rol İsmi Yazın `Örnek: ₺rolinfo Üye`");
@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
     .setColor("RANDOM")
     .addField("✏ Rol İsmi", role.name, true)
     .addField("🆔 ID", role.id, true)
-    .addField("👥 Role Sahip Kullanıcılar", role.members.size, true)
+    .addField("👥 Role Sahip Kullanıcılar", role.members.cache.size, true)
     .addField("💙 Renk", role.hexColor, true)
     .addField("📣 Etiketleme?", role.mentionable ? "\nEvet" : "Hayır", true)
     .addField(
