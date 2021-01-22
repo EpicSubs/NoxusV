@@ -1,32 +1,24 @@
 const Discord = require("discord.js");
-const cevaplar = [
-  "Evet",
-  "Hayır",
-  "Muhtemelen",
-  "İmkansız",
-  "Ne yazık ki hayır",
-  "Maalesef",
-  "Tabii ki",
-  "Belki de",
-  "Şimdi söylemeyeceğim",
-  "Odaklan ve tekrar sor",
-  "İyiyim Sen Nasılsın?"
-];
-exports.run = function(client, message, args) {
-  var soru = args.join(" ");
-  var cevap = cevaplar[Math.floor(Math.random() * cevaplar.length)];
-  if (!soru)
-    return message.channel.send("Bana sormak istediğin soruyu yazarmısın?");
-  else message.reply(cevap);
-};
+const get = require("request")
+exports.run = async (client, message, args) => {
+let soru = args.join(' ');
+if(!soru) return message.reply('soru sormalısın')
+let encodedsoru = encodeURI(soru)
+get(`https://api.codare.fun/sor/${encodedsoru}`, async function (err, resp, body) { 
+body = JSON.parse(body); 
+if(err) return message.channel.send('hata oluştu')
+message.channel.send(body.cevap)
+    }) 
+}
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
-  permLevel: 1
+  aliases: ["sor"],
+  permLevel: 0
 };
+
 exports.help = {
-  name: "sorusor",
-  description: "Bota soru sorarsınız.",
-  usage: "sorusor"
+  name: "sor",
+  description: "bota soru sorarsınız",
+  usage: "sor"
 };
