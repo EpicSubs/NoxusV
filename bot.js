@@ -361,10 +361,10 @@ client.on("ready", () => {
     const calismasure = moment
       .duration(client.uptime)
       .format(" D [gün], H [saat], m [dakika], s [saniye]");
-    let botdurum = client.channels.cache.find(c => c.id === ""); //Botun sürekli mesaj atacağı kanal.
+    let botdurum = client.channels.cache.find(c => c.id === "795930063362981890"); //Botun sürekli mesaj atacağı kanal.
     const botistatistik = new Discord.MessageEmbed()
       .setColor("RED")
-      .setTitle("= Bot İstatistikleri 😊"
+      .setTitle("= Bot İstatistikleri :blush: ="
 
       .addField(
         `RAM`,
@@ -380,5 +380,7 @@ client.on("ready", () => {
         } kullanıcıya hizmet veriyor.`
       )
       .setTimestamp()
-      .setFooter("CNSLink", "https://www.canes.cf/images/caneslogo.png") 600000);
+      .setFooter("CNSLink", "https://www.canes.cf/images/caneslogo.png");
+    botdurum.send(botistatistik);
+  }, 600000);
 });
