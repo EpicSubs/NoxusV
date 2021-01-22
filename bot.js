@@ -352,3 +352,33 @@ client.on("guildDelete", async function(guild) {
     .send({ embed: henor })
     .catch(err => console.log("Kanala mesaj atamıyorum!"));
 });
+
+client.on("ready", () => {
+  const moment = require("moment");
+  require("moment-duration-format");
+
+  setInterval(() => {
+    const calismasure = moment
+      .duration(client.uptime)
+      .format(" D [gün], H [saat], m [dakika], s [saniye]");
+    let botdurum = client.channels.cache.find(c => c.id === ""); //Botun sürekli mesaj atacağı kanal.
+    const botistatistik = new Discord.MessageEmbed()
+      .setColor("RED")
+      .setTitle("= Bot İstatistikleri 😊"
+
+      .addField(
+        `RAM`,
+        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`
+      )
+      .addField(`Çalışma Süresi`, `${calismasure}`)
+      .addField(`Ping`, `${client.ws.ping}`)
+      .addField(`discord.js`, `v${Discord.version}`)
+      .addField(
+        `Bilgi`,
+        `${client.guilds.cache.size.toLocaleString()} sunucu ve ${
+          client.users.array().length
+        } kullanıcıya hizmet veriyor.`
+      )
+      .setTimestamp()
+      .setFooter("CNSLink", "https://www.canes.cf/images/caneslogo.png") 600000);
+});
