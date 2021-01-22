@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const database = require('wio.db');
-const ayarlar = require('../ayarlar.json')
-exports.run = async (client, message, args) => 
-   
+exports.run = async (client, message, args) => {
+if(message.author.id !== '590847090205392896') return;
+
 function gönderkardesim(content) {
 const infoEmbed = new Discord.MessageEmbed()
 .setColor('BLUE')
@@ -15,7 +15,11 @@ return message.channel.send(infoEmbed)
 const durum = await database.fetch(client.user.id);
 if(durum == true) {
 
-await database.delete(client.user.id+':)');
+await database.delete(client.user.id+':)', { 
+author: message.author,
+time: Date.now() 
+});
+  
 return gönderkardesim('Bakım artık sona erdi.');
 
 } else {
