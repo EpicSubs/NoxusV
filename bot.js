@@ -355,32 +355,27 @@ client.on("guildDelete", async function(guild) {
 
 client.on("ready", () => {
   const moment = require("moment");
-  require("moment-duration-format");
+  require("moment-duration-format"); 
 
-  setInterval(() => {
+  
     const calismasure = moment
       .duration(client.uptime)
       .format(" D [gün], H [saat], m [dakika], s [saniye]");
-    let botdurum = client.channels.cache.find(c => c.id === "795930063362981890"); //Botun sürekli mesaj atacağı kanal.
+    let botdurum = client.channels.cache.get("795930063362981890"); //Botun sürekli mesaj atacağı kanal.
     const botistatistik = new Discord.MessageEmbed()
       .setColor("RED")
-      .setTitle("= Bot İstatistikleri :blush: ="
+      .setTitle("= Bot İstatistikleri :blush: =")
 
-      .addField(
-        `RAM`,
-        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`
-      )
+      .addField( `RAM`,`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`)
       .addField(`Çalışma Süresi`, `${calismasure}`)
       .addField(`Ping`, `${client.ws.ping}`)
       .addField(`discord.js`, `v${Discord.version}`)
-      .addField(
-        `Bilgi`,
-        `${client.guilds.cache.size.toLocaleString()} sunucu ve ${
-          client.users.array().length
-        } kullanıcıya hizmet veriyor.`
-      )
+      .addField(  `Bilgi`,`${client.guilds.cache.size} sunucu ve ${client.users.array().length } kullanıcıya hizmet veriyor.`)
       .setTimestamp()
-      .setFooter("CNSLink", "https://www.canes.cf/images/caneslogo.png");
+ 
     botdurum.send(botistatistik);
-  }, 600000);
-});
+  }, 6000);
+
+  
+
+  
