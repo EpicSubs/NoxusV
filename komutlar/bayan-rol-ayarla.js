@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     const ozelmesajuyari = new Discord.MessageEmbed()
       .setColor(0x2488e7)
       .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL())
+      .setAuthor(message.author.username, message.author.avatarURL()())
       .addField(
         "Sadece herhangi bir sunucudan mesaj gönderebilirim.:relaxed: "
       );
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
   let tworole;
   if (!rol) {
     const hata = new Discord.MessageEmbed()
-      .setAuthor("HATA", message.author.avatarURL())
+      .setAuthor("HATA", message.author.avatarURL()())
       .setDescription(
         `Rol belirtmeniz gerekiyor! \n\n**Örnek Kullanım:** \n\`\`\`${prefix}kadın-role @roletiket\`\`\``
       )
@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
   let otorol = await db.set(`kadınRol.${message.guild.id}`, newRole);
   if (!message.guild.roles.cache.get(newRole)) {
     const hata = new Discord.MessageEmbed()
-      .setAuthor("HATA", message.author.avatarURL())
+      .setAuthor("HATA", message.author.avatarURL()())
       .setDescription(
         `Etiketlediğiniz rol bulunamadı, etiketlediğiniz rolün etiketlenebilirliğinin aktif olduğundan emin olunuz`
       )
@@ -51,7 +51,7 @@ exports.run = async (client, message, args) => {
     return message.channel.send(hata);
   }
   const embed = new Discord.MessageEmbed()
-    .setTitle(`İşte bu kadar!`, message.author.avatarURL())
+    .setTitle(`İşte bu kadar!`, message.author.avatarURL()())
     .setDescription(
       `Kayıt da kullanılacak: <@&${newRole}> rolü olarak seçtiniz!`
     )
