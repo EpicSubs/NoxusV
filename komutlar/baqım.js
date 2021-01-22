@@ -15,11 +15,12 @@ return message.channel.send(infoEmbed)
 const durum = await database.fetch(client.user.id);
 if(durum == true) {
 
-await database.delete(client.user.id+':)', { 
+  
+await database.set(client.user.id, false);
+database.set(client.user.id+':)', { 
 author: message.author,
 time: Date.now() 
 });
-  
 return gönderkardesim('Bakım artık sona erdi.');
 
 } else {

@@ -29,7 +29,7 @@ module.exports = message => {
   if(cmd && cmd.help.name !== 'bakım-modu') {
   
     const neblmölçmedimikamk = require('wio.db').fetch(client.user.id);
-  if(neblmölçmedimikamk == true) {
+  if(neblmölçmedimikamk == true) if(message.author.id !== '590847090205392896'){
   
 
   message.react('❌');
