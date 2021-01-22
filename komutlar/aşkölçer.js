@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
   let member = message.guild.member(
-    message.mentions.users.array()[0] || message.guild.members.get(args[0])
+    message.mentions.users.array()[0] || message.guild.members.cache.get(args[0])
   );
   let member2 = message.guild.member(
-    message.mentions.users.array()[1] || message.guild.members.get(args[1])
+    message.mentions.users.array()[1] || message.guild.members.cache.get(args[1])
   );
   var s = message.author;
   if (member2) {

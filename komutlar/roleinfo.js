@@ -4,10 +4,10 @@ module.exports.run = async (client, message, args) => {
     .split(" ")
     .slice(1)
     .join(" ");
-  let role = message.guild.roles.cache.find("name", `${rol}`);
+  let role = message.guild.roles.cache.find("name => ${rol} ===");
   var hata = new Discord.MessageEmbed()
-    .setColor("#36393F")
-    .setDescription("❌ Lütfen Bir Rol İsmi Yazın `Örnek: ₺rolinfo Üye`");
+    .setColor('#36393F')
+    .setDescription("❌ Lütfen Bir Rol İsmi Yazın `Örnek: n!rolinfo Üye`");
   if (!role) return message.channel.send(hata);
   var moment = require("moment");
   var temps = moment(message.createdTimestamp).format("LLLL");
