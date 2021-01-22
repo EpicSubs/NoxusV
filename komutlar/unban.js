@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
 
   if (!Henor) {
     const Henoer = new Discord.MessageEmbed().setDescription(
-      "Kimin Banını Açcam İd Versene"
+      "Banını açacağım kişinin ID'sini bilmiyorum."
     );
     
     return message.channel.send(Henoer);
