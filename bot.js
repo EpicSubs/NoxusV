@@ -353,7 +353,9 @@ client.on("guildDelete", async function(guild) {
     .catch(err => console.log("Kanala mesaj atamıyorum!"));
 });
 
-client.on("ready", (message) => {
+client.on(
+  "ready",
+  message => {
     const moment = require("moment");
     require("moment-duration-format");
 
@@ -365,15 +367,23 @@ client.on("ready", (message) => {
       .setColor("RED")
       .setTitle("= Bot İstatistikleri :blush: =")
 
-      .addField(`RAM`,`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`)
+      .addField(
+        `RAM`,
+        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`
+      )
       .addField(`Çalışma Süresi`, `${calismasure}`)
       .addField(`Ping`, `${client.ws.ping}`)
-      .addField(`Mesaj gecikmesi:` `${new Date().getTime()}`)//elleme
       .addField(`Discord.js`, `v${Discord.version}`)
       .addField(`Node.js`, `${process.version}`)
-      .addField(`Bilgi`,`${client.guilds.cache.size} sunucu ve ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet veriyor.`)
+      .addField(
+        `Bilgi`,
+        `${client.guilds.cache.size} sunucu ve ${client.guilds.cache
+          .reduce((a, b) => a + b.memberCount, 0)
+          .toLocaleString()} kullanıcıya hizmet veriyor.`
+      )
       .setTimestamp();
 
     botdurum.send(botistatistik);
-  },1000);
-
+  },
+  3600000
+);

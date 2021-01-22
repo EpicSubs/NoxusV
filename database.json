@@ -60,5 +60,23 @@
   "saas_736300401221042206": "açık",
   "saas_780848601358139492": "açık",
   "log_780848601358139492": "783758434381725716",
-  "log_747503438920941758": "795930063362981890"
+  "log_747503438920941758": "795930063362981890",
+  "757233280469827621:)": {
+    "author": {
+      "id": "590847090205392896",
+      "username": "anilyayar41",
+      "bot": false,
+      "discriminator": "4133",
+      "avatar": null,
+      "flags": 0,
+      "lastMessageChannelID": "795930063362981890",
+      "createdTimestamp": 1560939323713,
+      "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/3.png",
+      "tag": "anilyayar41#4133",
+      "avatarURL": null,
+      "displayAvatarURL": "https://cdn.discordapp.com/embed/avatars/3.png"
+    },
+    "time": 1611305211569
+  },
+  "757233280469827621": true
 }
