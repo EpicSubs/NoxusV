@@ -13,33 +13,14 @@ exports.run = async (client, message, args) => {
 
     .setAuthor(client.user.username, client.user.avatarURL)
 
-    .addField(
-      "Veriler",
-      `Toplam sunucu: **${
-        client.guilds.cache.size
-      }** \nToplam kullanıcı: **${client.guilds.cache
-        .reduce((a, b) => a + b.memberCount, 0)
-        .toLocaleString()}** \n Toplam kanal: **${client.channels.cache.size}**`
-    )
+    .addField("Veriler",`Toplam sunucu: **${client.guilds.cache.size}** \nToplam kullanıcı: **${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}** \n Toplam kanal: **${client.channels.cache.size}**`)
 
-    .addField(
-      "Bot Geliştiricisi",
-      `Bot geliştiricisi ➡ <@749966727881687070> \n Bot geliştiricisi ➡ <@590847090205392896> `
-    )
+    .addField("Bot Geliştiricisi",`Bot geliştiricisi ➡ <@749966727881687070> \n Bot geliştiricisi ➡ <@590847090205392896> `)
 
-    .addField(
-      "Sürümler",
-      `Discord.js sürümü: **v${Discord.version}** \nNode.js sürümü: **${process.version}**`
-    )
+    .addField("Sürümler",`Discord.js sürümü: **v${Discord.version}** \nNode.js sürümü: **${process.version}**`)
 
-    .addField(
-      "Gecikmeler",
-      `Bot pingi: **${
-        client.ws.ping
-      }** \nMesaj gecikmesi: **${new Date().getTime() -
-        message.createdTimestamp}**`
-    )
-
+    .addField("Gecikmeler",`Bot pingi: **${client.ws.ping}** \nMesaj gecikmesi: **${new Date().getTime() -message.createdTimestamp}**`)
+  
     .setTimestamp()
 
     .setColor("RANDOM");
