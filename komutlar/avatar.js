@@ -11,7 +11,6 @@ exports.run = (client, message, args) => {
 
   const avatar = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setAuthor("Al Napcaksan Artık Yavşama Ha")
     .setImage(user.avatarURL());
   message.channel.send(avatar);
 };

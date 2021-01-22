@@ -15,8 +15,8 @@ exports.run = async (client, message, args) => {
         .setDescription("Lütfen birisini etiketle!")
     );
 
-  let erkek = db.get(`erkekpuan_${message.guild.id}_${user.id}`);
-  let kız = db.get(`kadınpuan_${message.guild.id}_${user.id}`);
+  let erkek = db.fetch(`erkekpuan_${message.guild.id}_${user.id}`);
+  let kız = db.fetch(`kadınpuan_${message.guild.id}_${user.id}`);
 
   message.channel.send(
     `${user} Adlı Kullanıcı Bu Sunucuda: \n\n**Toplam \`  ${kız ||
