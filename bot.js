@@ -362,7 +362,7 @@ client.on(
     const calismasure = moment
       .duration(client.uptime)
       .format(" D [gün], H [saat], m [dakika], s [saniye]");
-    let botdurum = client.channels.cache.get("795930063362981890");
+    let botdurum = client.channels.cache.get("802501735226671115");
     const botistatistik = new Discord.MessageEmbed()
       .setColor("RED")
       .setTitle("= Bot İstatistikleri :blush: =")
