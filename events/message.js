@@ -1,13 +1,10 @@
 const ayarlar = require("../ayarlar.json");
 let talkedRecently = new Set();
 module.exports = message => {
-  
   if (talkedRecently.has(message.author.id)) {
     return;
   }
 
-  
-  
   talkedRecently.add(message.author.id);
   setTimeout(() => {
     talkedRecently.delete(message.author.id);
@@ -25,22 +22,17 @@ module.exports = message => {
     cmd = client.commands.get(client.aliases.get(command));
   }
 
-      /* if(cmd) kısmının üzerine bunu yazıyorsunuz */
-  if(cmd && cmd.help.name !== 'bakım-modu') {
-  
-    const neblmölçmedimikamk = require('wio.db').fetch(client.user.id);
-  if(neblmölçmedimikamk == true) if(message.author.id !== '590847090205392896'){
-  
-
-  message.react('❌');
-  return message.reply(`**${client.user.username}** şu anda bakımda.`);
-  };
+  /* if(cmd) kısmının üzerine bunu yazıyorsunuz */
+  if (cmd && cmd.help.name !== "bakım-modu") {
+    const neblmölçmedimikamk = require("wio.db").fetch(client.user.id);
+    if (neblmölçmedimikamk == true)
+      if (message.author.id !== "813352032919617616") {
+        message.react("❌");
+        return message.reply(`**${client.user.username}** şu anda bakımda.`);
+      }
   }
-  
-  
+
   if (cmd) {
-    
-    
     if (perms < cmd.conf.permLevel) return;
     cmd.run(client, message, params, perms);
   }

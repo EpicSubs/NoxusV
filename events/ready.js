@@ -19,7 +19,8 @@ module.exports = client => {
     "Noxus Geri Dönüyor!!!!",
     "n!yardım",
     "Noxus İyi Eğlenceler Diler",
-    "Noxus Yeniden Doğuyor!!!!"
+    "Noxus Yeniden Doğuyor!!!!",
+    "Bazı Piçler Botumuzu Patlattı hee?"
   ];
   //PLAYING Oynuyor //WATCHING İzliyor
   setInterval(function() {
