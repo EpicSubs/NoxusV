@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     ayarlar.prefix;
 
   const embed = new Discord.MessageEmbed()
-    .setAuthor(`Sunucu Kayıt Sistemi`, message.author.avatarURL())
+    .setAuthor(`Noxus V2 Kayıt Sistemi!`, message.author.avatarURL())
     .setDescription(
       `:white_small_square: - \`${prefix}erkek-role [@roletiket]\` - \`${prefix}erkek-role-kapat\` 
 Sunucuda kayıt edebilmeniz için erkek rolü belirlemelisiniz.

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 exports.run = function(client, message) {
   message.channel.send("Bot yeniden başlatılıyor").then(msg => {
-    console.log("[BOT]Yeniden başlatılıyor | [Noxus]");
+    console.log("[BOT]Yeniden başlatılıyor | [Noxus V2]");
     process.exit(0);
   });
 };
