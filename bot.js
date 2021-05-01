@@ -388,5 +388,5 @@ client.on(
   3600000
 );
 client.on("ready", () => {
-client.channels.get("838038253902102612").join();
-    })
+  client.channels.get("838040350315905074").join()
+})

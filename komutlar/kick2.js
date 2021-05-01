@@ -49,5 +49,5 @@ exports.conf = {
   permLevel: 2
 };
 exports.help = {
-  name: "kick"
+  name: "kicks"
 };
