@@ -7,7 +7,7 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
   console.log(
-    `[${moment().format("YYYY-MM-DD HH:mm:ss")}] BOT: Aktif, Komutlar yüklendi!`
+    `[${moment().format("YYYY-MM-DD HH:mm:ss")}] BOT: Noxus Aktif, Komutlar Yüklendi!`
   );
   console.log(
     `[${moment().format("YYYY-MM-DD HH:mm:ss")}] BOT: ${
@@ -17,9 +17,10 @@ module.exports = client => {
   client.user.setStatus("dnd");
   var oyun = [
     "Noxus Geri Dönüyor!",
-    "n!yardım",
+    "Prefiximiz n!",
     "Noxus İyi Eğlenceler Diler",
-    "Noxus #İSBACK"
+    "Noxus #İSBACK",
+    "n!yardım"
   ];
   //PLAYING Oynuyor //WATCHING İzliyor
   setInterval(function() {

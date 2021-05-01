@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
         .toLocaleString()}** \n Toplam kanal: **${client.channels.cache.size}**`
     )
 
-    .addField("Bot Sahibi", ` Bot Sahibi ➡<@590847090205392896> `)
+    .addField("Bot Sahibi", ` Bot Sahibi ➡<@813352032919617616> `)
 
     .addField(
       "Bot Geliştiricisi",
