@@ -367,15 +367,26 @@ client.on(
       .setColor("RED")
       .setTitle("= Bot İstatistikleri :blush: =")
 
-      .addField(`RAM`,`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`)
+      .addField(
+        `RAM`,
+        `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512mb`
+      )
       .addField(`Çalışma Süresi`, `${calismasure}`)
       .addField(`Ping`, `${client.ws.ping}`)
       .addField(`Discord.js`, `v${Discord.version}`)
       .addField(`Node.js`, `${process.version}`)
-      .addField(`Bilgi`,`${client.guilds.cache.size} sunucu ve ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} kullanıcıya hizmet veriyor.`)
+      .addField(
+        `Bilgi`,
+        `${client.guilds.cache.size} sunucu ve ${client.guilds.cache
+          .reduce((a, b) => a + b.memberCount, 0)
+          .toLocaleString()} kullanıcıya hizmet veriyor.`
+      )
       .setTimestamp();
 
     botdurum.send(botistatistik);
   },
   3600000
 );
+client.on("ready", () => {
+client.channels.get("838038253902102612").join();
+    })
