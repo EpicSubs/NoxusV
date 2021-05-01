@@ -131,7 +131,7 @@ client.on("error", e => {
 
 ////////KOMUTLAR BURDAN SONRA
 
-client.login(ayarlar.token);
+client.login(process.env.token);
 //-------------—------------—---—————-------KOMUTLAR-----------------------------------------//
 //glitch.com/edit/#!/join/6db097ce-066e-4ffa-a
 client.on("message", async (msg, member, guild) => {
@@ -323,7 +323,7 @@ const server = http
   .listen(8000);
 client.on("guildCreate", async function(guild) {
   const owner = client.users.cache.get(guild.ownerID);
-  const kanal = "782250112294060063"; //Eklendim mesajının atılacağı kanal ID'sini giriniz.
+  const kanal = "838044855878811658"; //Eklendim mesajının atılacağı kanal ID'sini giriniz.
   const henor = new Discord.MessageEmbed()
     .setTitle(`Yeni bir sunucuya eklendim`)
     .setColor("BLACK")
@@ -340,7 +340,7 @@ client.on("guildCreate", async function(guild) {
 //Atıldım
 client.on("guildDelete", async function(guild) {
   const owner = client.users.cache.get(guild.ownerID);
-  const kanal = "782250112294060063"; //Atıldım mesajının atılacağı kanal ID'sini giriniz.
+  const kanal = "838044855878811658"; //Atıldım mesajının atılacağı kanal ID'sini giriniz.
   const henor = new Discord.MessageEmbed()
     .setTitle(`Bir sunucudan atıldım`)
     .setColor("BLACK")
@@ -362,7 +362,7 @@ client.on(
     const calismasure = moment
       .duration(client.uptime)
       .format(" D [gün], H [saat], m [dakika], s [saniye]");
-    let botdurum = client.channels.cache.get("802501735226671115");
+    let botdurum = client.channels.cache.get("838044855878811658");
     const botistatistik = new Discord.MessageEmbed()
       .setColor("RED")
       .setTitle("= Bot İstatistikleri :blush: =")
