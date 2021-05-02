@@ -401,3 +401,4 @@ if(db.has(`${member.guild.id}.otorol`)){
 member.roles.add(db.get(`${member.guild.id}.otorol`));
 }else return;  
 })
+////////////////////////////////////////////////////////////////////////////////////////////
