@@ -180,7 +180,9 @@ client.on("message", async msg => {
       ".biz",
       ".party",
       ".rf.gd",
-      ".az"
+      ".az",
+      ".gq",
+      ".cf"
     ];
     if (reklam.some(word => msg.content.toLowerCase().includes(word))) {
       try {

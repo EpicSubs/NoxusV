@@ -65,7 +65,8 @@
     "ytdl-core": "^3.4.0",
     "wio.db": "^4.0.9",
     "dblapi.js": "^2.4.1",
-    "discord": "^0.8.2"
+    "discord": "^0.8.2",
+    "google-tts-api": "^2.0.1"
   },
   "engines": {
     "node": "12.x"

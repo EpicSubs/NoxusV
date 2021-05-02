@@ -21,6 +21,7 @@ dependencies:
   generate-password: 1.5.1
   gifencoder: 2.0.1
   google: 2.1.0
+  google-tts-api: 2.0.2
   hastebin-gen: 2.0.5
   instagram-user: 2.0.1
   is-url: 1.2.4
@@ -712,6 +713,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  /axios/0.21.1:
+    dependencies:
+      follow-redirects: 1.14.0
+    dev: false
+    resolution:
+      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /balanced-match/1.0.0:
     dev: false
     resolution:
@@ -1796,6 +1803,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8=
+  /follow-redirects/1.14.0:
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-0vRwd7RKQBTt+mgu87mtYeofLFZpTas2S9zY+jIeuLJMNvudIgF52nr19q40HOwH5RrhWIPuj9puybzSJiRrVg==
   /follow-redirects/1.5.10:
     dependencies:
       debug: 3.1.0
@@ -2041,6 +2054,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-52mJJopsdMOJCLEwWxD8DjlOnQ8=
+  /google-tts-api/2.0.2:
+    dependencies:
+      axios: 0.21.1
+    dev: false
+    resolution:
+      integrity: sha512-MkQYbBJEdom8hJpfEVDfD3tpBtkz0X59C+FNsoRhbnCiFjZRnzyurGQ5OrAr3xkigII56/jmk0JNwZsp450G+Q==
   /google/2.1.0:
     dependencies:
       cheerio: 0.19.0
@@ -4663,6 +4682,7 @@ specifiers:
   generate-password: ^1.5.0
   gifencoder: ^2.0.1
   google: ^2.1.0
+  google-tts-api: ^2.0.1
   hastebin-gen: ^2.0.5
   instagram-user: ^2.0.1
   is-url: ^1.2.4
