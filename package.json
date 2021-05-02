@@ -46,7 +46,7 @@
     "parse-ms": "^2.1.0",
     "path": "^0.12.7",
     "quick-db": "^1.0.5",
-        "ms": "^2.1.2",
+    "ms": "^2.1.2",
     "random-puppy": "^1.1.0",
     "randomstring": "^1.1.5",
     "rebuild": "^0.1.2",
@@ -64,7 +64,8 @@
     "weather-js": "^2.0.0",
     "ytdl-core": "^3.4.0",
     "wio.db": "^4.0.9",
-    "dblapi.js": "^2.4.1"
+    "dblapi.js": "^2.4.1",
+    "discord": "^0.8.2"
   },
   "engines": {
     "node": "12.x"

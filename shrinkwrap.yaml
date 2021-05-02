@@ -9,6 +9,7 @@ dependencies:
   croxy-api: 1.5.8
   dateformat: 3.0.3
   dblapi.js: 2.4.1
+  discord: 0.8.2
   discord.js: 12.3.1
   express: 4.17.1
   ffmpeg: 0.0.4
@@ -1388,6 +1389,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
+  /describe/1.2.0:
+    dependencies:
+      string-color: 0.8.0
+    dev: false
+    resolution:
+      integrity: sha1-O0LvptyhqiRF720VwZhU3lg3EcA=
   /destroy/1.0.4:
     dev: false
     resolution:
@@ -1414,6 +1421,15 @@ packages:
       node: '>=12.0.0'
     resolution:
       integrity: sha512-mSFyV/mbvzH12UXdS4zadmeUf8IMQOo/YdunubG1wWt1xjWvtaJz/s9CGsFD2B5pTw1W/LXxxUbrQjIZ/xlUdw==
+  /discord/0.8.2:
+    dependencies:
+      describe: 1.2.0
+      glob: 7.1.6
+      mootools: 1.5.2
+      string-color: 0.8.0
+    dev: false
+    resolution:
+      integrity: sha1-jLPr+fLpBZRVTQw3NMma+Huwt3A=
   /dom-serializer/0.1.1:
     dependencies:
       domelementtype: 1.3.1
@@ -3008,6 +3024,12 @@ packages:
       node: '>=0.10.3'
     resolution:
       integrity: sha512-P2SBLQ8Z0PVx71ngoXwo12+FiSfbNfGOClAao03/bant5DgLNkOPAck5IaJcEk4gKlQhDEURzfR3xuBG1/B+IA==
+  /mootools/1.5.2:
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha1-H93xtOCp5l0g1IO5tLCOHoexFho=
   /ms/2.0.0:
     dev: false
     resolution:
@@ -4018,6 +4040,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-t86YjtP1LtPt8D+TaIARm6PtC9tBnF1FhxQeLFs6ohG7vDUfQuy/M8II14rx1TTUkVuYoWHP/7DlvTtoCGULcw==
+  /string-color/0.8.0:
+    dev: false
+    resolution:
+      integrity: sha1-HmdMgpXOKd3Zd4tuTLOqXnVEhAM=
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -4625,6 +4651,7 @@ specifiers:
   croxy-api: ^1.5.8
   dateformat: ^3.0.3
   dblapi.js: ^2.4.1
+  discord: ^0.8.2
   discord.js: ^12.3.1
   express: ^4.17.1
   ffmpeg: ^0.0.4
