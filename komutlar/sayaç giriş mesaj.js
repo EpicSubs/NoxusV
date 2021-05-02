@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
 
   const cmesaj = await db.fetch(`sayaccikismesaj_${message.guild.id}`);
 
-  const skanal = await db.fetch(`sayackanal_${message.guild.id}`);
+   const skanal = await db.fetch(`sayackanal_${message.guild.id}`);
 
   if (!skanal)
     return message.reply(
