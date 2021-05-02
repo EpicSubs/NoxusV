@@ -85,5 +85,23 @@
   "saas_838038253902102608": "açık",
   "838038253902102608.otorol": "838039665814536213",
   "838038253902102608.prefix": "n!",
-  "afk_Herus#4517": "amk"
+  "afk_Herus#4517": "amk",
+  "823844487574716446": false,
+  "823844487574716446:)": {
+    "author": {
+      "id": "813352032919617616",
+      "username": "Mr.Joker",
+      "bot": false,
+      "discriminator": "8670",
+      "avatar": null,
+      "flags": 64,
+      "lastMessageChannelID": "838040093352132638",
+      "createdTimestamp": 1613988635998,
+      "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "tag": "Mr.Joker#8670",
+      "avatarURL": null,
+      "displayAvatarURL": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "time": 1619980414196
+  }
 }

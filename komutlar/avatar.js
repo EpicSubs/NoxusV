@@ -8,12 +8,12 @@ exports.run = (client, message, args) => {
   } else {
     user = message.author;
   }
-let avava = user.avatarURL()
-if(!avava) return message.channel.send("Profil fotoğrafın bulunmuyor")
+  let avava = user.avatarURL();
+  if (!avava) return message.channel.send("Profil fotoğrafın bulunmuyor");
   const avatar = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setImage(user.avatarURL());
-  if(avava)message.channel.send(avatar);
+  if (avava) message.channel.send(avatar);
 };
 
 exports.conf = {

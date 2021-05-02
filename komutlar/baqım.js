@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const database = require("wio.db");
 exports.run = async (client, message, args) => {
-  if (message.author.id !== "590847090205392896") return;
+  if (message.author.id !== "813352032919617616") return;
 
   function gönderkardesim(content) {
     const infoEmbed = new Discord.MessageEmbed()
