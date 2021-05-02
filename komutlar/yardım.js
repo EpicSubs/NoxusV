@@ -2,22 +2,21 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 var prefix = ayarlar.prefix;
 
-exports.run = async (message, client, async) => {
-  const embed = Discord.MessageEmbed()
+exports.run = async (message, client, args) => {
+  const MedusaCode = Discord.MessageEmbed()
     .setColor("RANDOM") //İstediğiniz Rengin İngilizcesini Yazın RANDOM yazarsaniz Random Rekler çikar
     .setTitle("Noxus Yardım Menüsü")
-    .setDescription(`${prefix}yetkili`)
-    .setDescription(`${prefix}eğlence`)
-    .setDescription(`${prefix}logo`)
-    .setDescription(`${prefix}davet`)
-    .setDescription(`${prefix}istatistik`)
-    .setThumbnail(``); //Komuta Resim Eklersiniz İstediğiniz Resim linkini yapiştirin
-    message.channel.send(embed);
+    .addField(`${prefix}yetkili`)
+    .addField(`${prefix}eğlence`)
+    .addField(`${prefix}logo`)
+    .addField(`${prefix}davet`)
+    .addField(`${prefix}istatistik`)
+    message.channel.send(MedusaCode);
 };
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["y", "h", "help", "yardim"],
+  aliases: "y",
   permLevel: 0
 };
 exports.help = {
