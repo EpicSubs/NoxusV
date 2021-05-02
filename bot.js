@@ -399,27 +399,3 @@ if(db.has(`${member.guild.id}.otorol`)){
 member.roles.add(db.get(`${member.guild.id}.otorol`));
 }else return;  
 })
-
-client.on("message", async message => {
-let prefix; 
-if (db.has(`${message.guild.id}.prefix`) === true) {
-  prefix = db.get(`${message.guild.id}.prefix`)
-}
-if (db.has(`${message.guild.id}.prefix`) === false) {
-  prefix = "n!" // orjinal prefix
-};
-	if (message.author.bot) return
-	if (!message.content.startsWith(prefix)) return
-	var command = message.content.split(' ')[0].slice(prefix.length)
-	var args = message.content.split(' ').slice(1)
-	var cmd = ''
-
-	if (client.commands.has(command)) {
-		var cmd = client.commands.get(command)
-	} else if (client.aliases.has(command)) {
-		var cmd = client.commands.get(client.aliases.get(command))
-	}
-
-		cmd.run(client, message, args)
-	
-});
